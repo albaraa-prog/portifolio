@@ -171,8 +171,8 @@ const HomePage = () => {
         {/* Games */}
         <section id="Games">
           <h2>Play a Game</h2>
-          <p>Want to play Tic Tac Toe?</p>
           <a href="/tictac" className="link">Play Tic Tac Toe</a>
+          <a href="/snake" className="link">Play Snake Game</a>
         </section>
 
       </div>
