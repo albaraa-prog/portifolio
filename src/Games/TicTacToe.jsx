@@ -1,36 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const TicTac = () => {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [isXNext, setIsXNext] = useState(true);
     const [winner, setWinner] = useState(null);
-    const navigate = useNavigate();  // useNavigate hook to handle navigation
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isXNext && winner === null) {
-            setTimeout(aiMove, 500); 
-        }
-    }, [isXNext, winner]);
+    const handleClick = useCallback(
+        (index) => {
+            if (board[index] || winner) return;
 
-    const handleClick = (index) => {
-        if (board[index] || winner) return; // Ignore clicks on already filled squares or if game is over
+            const newBoard = [...board];
+            newBoard[index] = isXNext ? "X" : "O";
+            setBoard(newBoard);
+            setIsXNext(!isXNext);
+            checkWinner(newBoard);
+        },
+        [board, isXNext, winner]
+    );
 
-        const newBoard = [...board];
-        newBoard[index] = isXNext ? "X" : "O";
-        setBoard(newBoard);
-        setIsXNext(!isXNext);
-        checkWinner(newBoard);
-    };
-
-    const aiMove = () => {
+    const aiMove = useCallback(() => {
         const emptySquares = board
             .map((value, index) => (value === null ? index : null))
             .filter((index) => index !== null);
-        const randomMove = emptySquares[Math.floor(Math.random() * emptySquares.length)];
+        if (emptySquares.length > 0) {
+            const randomMove = emptySquares[Math.floor(Math.random() * emptySquares.length)];
+            handleClick(randomMove);
+        }
+    }, [board, handleClick]);
 
-        handleClick(randomMove);
-    };
+    useEffect(() => {
+        if (!isXNext && winner === null) {
+            setTimeout(aiMove, 500);
+        }
+    }, [isXNext, winner, aiMove]);
 
     const checkWinner = (newBoard) => {
         const winningCombinations = [
@@ -67,12 +71,12 @@ const TicTac = () => {
         setWinner(null);
     };
 
+    const navigateHome = () => {
+        navigate("/");
+    };
+
     const resultMessage = winner === "Draw" ? "It's a Draw!" : winner === "X" ? "You Win!" : "You Lose!";
     const resultColor = winner === "Draw" ? "#333" : winner === "X" ? "green" : "red";
-
-    const navigateHome = () => {
-        navigate("/"); // Navigate to the root page
-    };
 
     return (
         <div style={styles.container}>
@@ -164,10 +168,10 @@ const styles = {
         marginTop: "30px",
         fontSize: "28px",
         fontWeight: "bold",
-        textAlign: "center",  // Center align the result message
+        textAlign: "center",
     },
     spacing: {
-        marginBottom: "20px",  // Adds space between the message and the buttons
+        marginBottom: "20px",
     },
     resetButton: {
         marginTop: "20px",
@@ -178,17 +182,7 @@ const styles = {
         border: "none",
         cursor: "pointer",
         borderRadius: "8px",
-        marginRight: "10px", // Add space between the buttons
-    },
-    homeButton: {
-        marginTop: "20px", 
-        padding: "12px 25px",
-        fontSize: "18px",
-        backgroundColor: "#2196F3", // Different color for Go Home button
-        color: "white",
-        border: "none",
-        cursor: "pointer",
-        borderRadius: "8px",
+        marginRight: "10px",
     },
     nextPlayer: {
         marginTop: "20px",

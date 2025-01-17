@@ -8,10 +8,32 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: system-ui, -apple-system, sans-serif;
-    background: linear-gradient(-45deg, #000000, #1e1e8a, #1e40af, #632727);
+    background: linear-gradient(-45deg, #49868b,#703882, #1e40af, #b93030);
     background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
+    animation: gradient 5s ease infinite;
     padding: 2rem;
+    position: relative; /* To contain the pseudo-element */
+    /* Remove overflow: hidden; */
+    overflow-x: hidden; /* Only hide horizontal overflow, if needed */
+}
+
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark layer with 50% opacity */
+    backdrop-filter: blur(50px); /* Blurring effect */
+    z-index: 5;
+    pointer-events: none; /* Ensures the layer doesn't block interactions */
+}
+
+* {
+    position: relative; /* To ensure child elements are above the blur layer */
+    z-index: 2;
 }
 
 body::before {
@@ -38,7 +60,7 @@ body::before {
     max-width: 1024px;
     margin: 80px auto 0;
     padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(37, 58, 126, 0.95);
     color: #1a1a1a;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

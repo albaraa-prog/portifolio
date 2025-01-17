@@ -80,7 +80,6 @@ const HomePage = () => {
     <div className={isDarkMode ? 'dark' : ''}>
       <nav className="navbar">
         <div className="nav-content">
-          <div className="nav-brand">Al Baraa Al Harthi</div>
           <div className="nav-links">
             <a href="#header" className="nav-link">Home</a>
             <a href="#education" className="nav-link">Education</a>
@@ -170,9 +169,12 @@ const HomePage = () => {
 
         {/* Games */}
         <section id="Games">
-          <h2>Play a Game</h2>
+          <h2>Play Games</h2>
+          <h1>2D</h1>
           <a href="/tictac" className="link">Play Tic Tac Toe</a>
           <a href="/snake" className="link">Play Snake Game</a>
+          <h1>3D</h1>
+          <a href="/game" className="link">Play Tic Tac Toe</a>
         </section>
 
       </div>

@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
+import FluppyBird from "./Games/FluppyBird";
+import SnakeGame from "./Games/SnakeGame";
+import ThreeDGame from './Games/ThreeDGame';
+import TicTac from './Games/TicTacToe';
 import './index.css';
 import HomePage from './pages/Home';
-import SnakeGame from "./pages/SnakeGame";
-import TicTac from './pages/TicTacToe';
 
 const App = () => (
   <Router>
@@ -12,6 +15,8 @@ const App = () => (
       <Route path="/" element={<HomePage />} />
       <Route path="/tictac" element={<TicTac />} />
       <Route path="/snake" element={<SnakeGame />} />
+      <Route path="/game" element={<ThreeDGame />} />
+      <Route path="/FluppyBird" element={<FluppyBird />} />
     </Routes>
   </Router>
 );
