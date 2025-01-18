@@ -9,14 +9,14 @@ const HomePage = () => {
   };
 
   const personalInfo = {
-    name: 'Al-Baraa Mohammed Al-Harthi',
+    name: 'Al Baraa Mohammed Al Harthi',
     title: 'Software Engineer | Mobile & Cross-Platform App Developer',
     location: 'Muscat, Oman',
     contact: {
       email: 'albraa9021@gmail.com',
-      linkedin: 'https://linkedin.com/in/albaraa-harthi',
-      github: 'https://github.com/albaraaharthi',
-      instagram: 'https://instagram.com/albaraaharthi',
+      linkedin: 'https://www.linkedin.com/in/al-baraa-al-harthi-740340212',
+      github: 'https://github.com/albaraa-prog',
+      instagram: 'https://instagram.com/sp_nr',
     },
   };
 
@@ -96,16 +96,48 @@ const HomePage = () => {
       <div className="container">
         {/* Header */}
         <header id="header" className="header">
-          <h1>{personalInfo.name}</h1>
-          <p>{personalInfo.title}</p>
-          <div className="social-links">
-            <a href={personalInfo.contact.linkedin} target="_blank" rel="noopener noreferrer" className="link">LinkedIn</a>
-            <a href={personalInfo.contact.github} target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
-            <a href={personalInfo.contact.instagram} target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
-            <a href={`mailto:${personalInfo.contact.email}`} className="link">Email</a>
-          </div>
-          <p className="location">{personalInfo.location}</p>
-        </header>
+  <h1>{personalInfo.name}</h1>
+  <p>{personalInfo.title}</p>
+  <div className="social-links">
+    <a 
+      href={personalInfo.contact.linkedin} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="link"
+    >
+      LinkedIn
+    </a>
+    <a 
+      href={personalInfo.contact.github} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="link"
+    >
+      GitHub
+    </a>
+    <a 
+      href={personalInfo.contact.instagram} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="link"
+    >
+      Instagram
+    </a>
+    <a 
+      href="#" 
+      className="link"
+      onClick={(e) => {
+        e.preventDefault(); // Prevent navigation
+        navigator.clipboard.writeText(personalInfo.contact.email);
+        alert('Email copied to clipboard!');
+      }}
+    >
+      {personalInfo.contact.email}
+    </a>
+  </div>
+  <p className="location">{personalInfo.location}</p>
+</header>
+
 
         {/* Education */}
         <section id="education">
@@ -170,11 +202,12 @@ const HomePage = () => {
         {/* Games */}
         <section id="Games">
           <h2>Play Games</h2>
-          <h1>2D</h1>
-          <a href="/tictac" className="link">Play Tic Tac Toe</a>
+          <h3>2D</h3>
+          <a href="/FluppyBird" className="link">Play Fluppy Bird</a>
           <a href="/snake" className="link">Play Snake Game</a>
-          <h1>3D</h1>
-          <a href="/game" className="link">Play Tic Tac Toe</a>
+          <a href="/tictac" className="link">Play Tic Tac Toe</a>
+          <h3>3D</h3>
+          <a href="/game" className="link">Soon!</a>
         </section>
 
       </div>
