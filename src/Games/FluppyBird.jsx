@@ -35,16 +35,17 @@ const FlappyBird = () => {
     const birdRight = birdLeft + BIRD_WIDTH;
     const birdTop = birdYPos;
     const birdBottom = birdYPos + BIRD_HEIGHT;
-
     // Ground collision
-    if (birdBottom > window.innerHeight - GROUND_HEIGHT) {
+    if (birdBottom > window.innerHeight- 130) {
       return true;
     }
 
     // Ceiling collision
+    /*
     if (birdTop < 0) {
       return true;
     }
+    */
 
     // Pipe collision
     return currentPipes.some(pipe => {

@@ -3,9 +3,14 @@ import './Home.css';
 
 const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
+  };
+
+  const toggleNav = () => {
+    setIsNavOpen((prevState) => !prevState);
   };
 
   const personalInfo = {
@@ -78,66 +83,79 @@ const HomePage = () => {
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
-      <nav className="navbar">
-        <div className="nav-content">
-          <div className="nav-links">
-            <a href="#header" className="nav-link">Home</a>
-            <a href="#education" className="nav-link">Education</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#skills" className="nav-link">Skills</a>
-            <a href="#Games" className="nav-link">Games</a>
+      {/* Floating Navbar */}
+      <div className="floating-nav">
+        <button onClick={toggleNav} className="floating-nav-button">
+          {isNavOpen ? '✖' : '☰'}
+        </button>
+        {isNavOpen && (
+          <div className="floating-nav-menu">
+            <button onClick={toggleTheme} className="theme-toggle">
+              {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
+            </button>
+            <a href="#header" className="nav-link" onClick={toggleNav}>
+              Home
+            </a>
+            <a href="#education" className="nav-link" onClick={toggleNav}>
+              Education
+            </a>
+            <a href="#projects" className="nav-link" onClick={toggleNav}>
+              Projects
+            </a>
+            <a href="#skills" className="nav-link" onClick={toggleNav}>
+              Skills
+            </a>
+            <a href="#Games" className="nav-link" onClick={toggleNav}>
+              Games
+            </a>
           </div>
-          <button onClick={toggleTheme} className="theme-toggle">
-            {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-          </button>
-        </div>
-      </nav>
+        )}
+      </div>
 
       <div className="container">
         {/* Header */}
         <header id="header" className="header">
-  <h1>{personalInfo.name}</h1>
-  <p>{personalInfo.title}</p>
-  <div className="social-links">
-    <a 
-      href={personalInfo.contact.linkedin} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="link"
-    >
-      LinkedIn
-    </a>
-    <a 
-      href={personalInfo.contact.github} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="link"
-    >
-      GitHub
-    </a>
-    <a 
-      href={personalInfo.contact.instagram} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="link"
-    >
-      Instagram
-    </a>
-    <a 
-      href="#" 
-      className="link"
-      onClick={(e) => {
-        e.preventDefault(); // Prevent navigation
-        navigator.clipboard.writeText(personalInfo.contact.email);
-        alert('Email copied to clipboard!');
-      }}
-    >
-      {personalInfo.contact.email}
-    </a>
-  </div>
-  <p className="location">{personalInfo.location}</p>
-</header>
-
+          <h1>{personalInfo.name}</h1>
+          <p>{personalInfo.title}</p>
+          <div className="social-links">
+            <a
+              href={personalInfo.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={personalInfo.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              GitHub
+            </a>
+            <a
+              href={personalInfo.contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Instagram
+            </a>
+            <a
+              href="#"
+              className="link"
+              onClick={(e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(personalInfo.contact.email);
+                alert('Email copied to clipboard!');
+              }}
+            >
+              {personalInfo.contact.email}
+            </a>
+          </div>
+          <p className="location">{personalInfo.location}</p>
+        </header>
 
         {/* Education */}
         <section id="education">
