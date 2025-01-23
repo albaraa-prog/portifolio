@@ -4,6 +4,8 @@ import './Home.css';
 const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -81,37 +83,118 @@ const HomePage = () => {
     };
   }, []);
 
+  const handleEmailCopy = () => {
+    try {
+      navigator.clipboard.writeText(personalInfo.contact.email);
+      alert('Email copied to clipboard!');
+    } catch (error) {
+      console.error('Failed to copy email', error);
+      alert('Unable to copy email. Please copy manually.');
+    }
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
+  // Check device type on resize
+  useEffect(() => {
+    const checkDeviceType = () => {
+      setIsMobile(window.innerWidth <= 1600);
+    };
+
+    // Check initial device type
+    checkDeviceType();
+
+    // Add resize listener
+    window.addEventListener('resize', checkDeviceType);
+
+    // Cleanup listener
+    return () => {
+      window.removeEventListener('resize', checkDeviceType);
+    };
+  }, []);
+
+  // Close nav when a link is clicked or when clicking outside on mobile
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsNavOpen(false);
+    }
+  };
+
+  // Render desktop sidebar
+
+const renderDesktopSidebar = () => (
+  <div 
+    className={`desktop-sidebar ${!isSidebarVisible ? 'hidden' : ''}`}
+  >
+    <div className="sidebar-content">
+      <button onClick={toggleTheme} className="theme-toggle">
+        {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
+      </button>
+      <nav className="column-nav">
+        <a href="#header" className="nav-link" onClick={handleLinkClick}>
+          Home
+        </a>
+        <a href="#education" className="nav-link" onClick={handleLinkClick}>
+          Education
+        </a>
+        <a href="#projects" className="nav-link" onClick={handleLinkClick}>
+          Projects
+        </a>
+        <a href="#skills" className="nav-link" onClick={handleLinkClick}>
+          Skills
+        </a>
+        <a href="#Games" className="nav-link" onClick={handleLinkClick}>
+          Games
+        </a>
+      </nav>
+    </div>
+  </div>
+);
+
+  // Render mobile floating nav
+  const renderMobileFloatingNav = () => (
+    <div className="floating-nav">
+      <button onClick={toggleNav} className="floating-nav-button">
+        {isNavOpen ? '✖' : '☰'}
+      </button>
+      {isNavOpen && (
+        <div className="floating-nav-menu">
+          <button onClick={toggleTheme} className="theme-toggle">
+            {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
+          </button>
+          <a href="#header" className="nav-link" onClick={handleLinkClick}>
+          Home
+          </a>
+          <a href="#education" className="nav-link" onClick={handleLinkClick}>
+            Education
+          </a>
+          <a href="#projects" className="nav-link" onClick={handleLinkClick}>
+            Projects
+          </a>
+          <a href="#skills" className="nav-link" onClick={handleLinkClick}>
+            Skills
+          </a>
+          <a href="#Games" className="nav-link" onClick={handleLinkClick}>
+            Games
+          </a>
+        </div>
+      )}
+    </div>
+  );
+
+
   return (
     <div className={isDarkMode ? 'dark' : ''}>
-      {/* Floating Navbar */}
-      <div className="floating-nav">
-        <button onClick={toggleNav} className="floating-nav-button">
-          {isNavOpen ? '✖' : '☰'}
-        </button>
-        {isNavOpen && (
-          <div className="floating-nav-menu">
-            <button onClick={toggleTheme} className="theme-toggle">
-              {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
-            </button>
-            <a href="#header" className="nav-link" onClick={toggleNav}>
-              Home
-            </a>
-            <a href="#education" className="nav-link" onClick={toggleNav}>
-              Education
-            </a>
-            <a href="#projects" className="nav-link" onClick={toggleNav}>
-              Projects
-            </a>
-            <a href="#skills" className="nav-link" onClick={toggleNav}>
-              Skills
-            </a>
-            <a href="#Games" className="nav-link" onClick={toggleNav}>
-              Games
-            </a>
-          </div>
-        )}
-      </div>
-
+      {/*Navbar */}
+      {isMobile ? renderMobileFloatingNav() : renderDesktopSidebar()}
+      <button 
+      onClick={toggleSidebar} 
+      className="sidebar-toggle-btn"
+    >
+      {isSidebarVisible ? '✖' : '☰'}
+    </button>
       <div className="container">
         {/* Header */}
         <header id="header" className="header">
@@ -146,9 +229,7 @@ const HomePage = () => {
               href="#"
               className="link"
               onClick={(e) => {
-                e.preventDefault();
-                navigator.clipboard.writeText(personalInfo.contact.email);
-                alert('Email copied to clipboard!');
+                handleEmailCopy();
               }}
             >
               {personalInfo.contact.email}
