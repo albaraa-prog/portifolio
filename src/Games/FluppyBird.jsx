@@ -10,7 +10,7 @@ import SiloDown from "../Assets/SiloDown.png";
 import SiloUp from "../Assets/SiloUp.png";
 
 const FlappyBird = () => {
-  const [birdY, setBirdY] = useState(200);
+  const [birdY, setBirdY] = useState(window.innerHeight * 0.3);
   const [birdVelocity, setBirdVelocity] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [pipes, setPipes] = useState([]);
@@ -22,12 +22,12 @@ const FlappyBird = () => {
   // Game constants
   const GRAVITY = 0.6;
   const JUMP_STRENGTH = -10;
-  const BIRD_WIDTH = 50;
-  const BIRD_HEIGHT = 35;
-  const PIPE_WIDTH = 70;
-  const PIPE_GAP = 150;
+  const BIRD_WIDTH = window.innerWidth * 0.05;
+  const BIRD_HEIGHT = window.innerHeight * 0.035;
+  const PIPE_WIDTH = window.innerWidth * 0.07;
+  const PIPE_GAP = window.innerHeight * 0.2;
   const PIPE_SPEED = 3;
-  const GROUND_HEIGHT = 50;
+  const GROUND_HEIGHT = window.innerHeight * 0.1;
 
   // Collision detection
   const checkCollision = useCallback((birdYPos, currentPipes) => {
@@ -35,17 +35,11 @@ const FlappyBird = () => {
     const birdRight = birdLeft + BIRD_WIDTH;
     const birdTop = birdYPos;
     const birdBottom = birdYPos + BIRD_HEIGHT;
-    // Ground collision
-    if (birdBottom > window.innerHeight- 130) {
-      return true;
-    }
 
-    // Ceiling collision
-    /*
-    if (birdTop < 0) {
+    // Ground collision
+    if (birdBottom > window.innerHeight - GROUND_HEIGHT) {
       return true;
     }
-    */
 
     // Pipe collision
     return currentPipes.some(pipe => {
@@ -61,12 +55,12 @@ const FlappyBird = () => {
       }
       return false;
     });
-  }, []);
+  }, [BIRD_WIDTH, BIRD_HEIGHT, PIPE_GAP, PIPE_WIDTH, GROUND_HEIGHT]);
 
   // Start game
   const startGame = useCallback(() => {
     setGameStarted(true);
-    setBirdY(200);
+    setBirdY(window.innerHeight * 0.3);
     setBirdVelocity(0);
     setPipes([]);
     setScore(0);
@@ -90,10 +84,7 @@ const FlappyBird = () => {
 
     const gameLoop = setInterval(() => {
       setBirdVelocity(prev => prev + GRAVITY);
-      setBirdY(prev => {
-        const newY = prev + birdVelocity;
-        return newY;
-      });
+      setBirdY(prev => prev + birdVelocity);
 
       setPipes(prevPipes => {
         const updatedPipes = prevPipes
@@ -129,7 +120,7 @@ const FlappyBird = () => {
   const handleJump = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (!gameStarted) {
       startGame();
     } else if (!gameOver) {
@@ -229,10 +220,11 @@ const FlappyBird = () => {
         style={{
           position: "absolute",
           bottom: "0",
-          width: "100%",
+          width: "200%",
           height: `${GROUND_HEIGHT}px`,
           backgroundImage: `url(${Ground})`,
           backgroundSize: "repeat-x",
+          animation: "move-ground 3s linear infinite",
         }}
       />
 

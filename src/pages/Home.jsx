@@ -5,7 +5,6 @@ const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -17,7 +16,7 @@ const HomePage = () => {
 
   const personalInfo = {
     name: 'Al Baraa Mohammed Al Harthi',
-    title: 'Software Engineer | Mobile & Cross-Platform App Developer',
+    title: 'Software Engineer | AI/ML |Mobile & Cross-Platform App Developer',
     location: 'Muscat, Oman',
     contact: {
       email: 'albraa9021@gmail.com',
@@ -93,108 +92,57 @@ const HomePage = () => {
     }
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  };
 
-  // Check device type on resize
   useEffect(() => {
     const checkDeviceType = () => {
-      setIsMobile(window.innerWidth <= 1600);
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    // Check initial device type
     checkDeviceType();
-
-    // Add resize listener
     window.addEventListener('resize', checkDeviceType);
 
-    // Cleanup listener
     return () => {
       window.removeEventListener('resize', checkDeviceType);
     };
   }, []);
 
-  // Close nav when a link is clicked or when clicking outside on mobile
-  const handleLinkClick = () => {
-    if (isMobile) {
-      setIsNavOpen(false);
-    }
-  };
 
-  // Render desktop sidebar
-
-const renderDesktopSidebar = () => (
-  <div 
-    className={`desktop-sidebar ${!isSidebarVisible ? 'hidden' : ''}`}
-  >
-    <div className="sidebar-content">
+  
+  return (
+    <div className={`home-page ${isDarkMode ? 'dark' : ''}`}>
+    {/* Sidebar */}
+    <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
+     
+      <ul className="nav-links">
+      <li>
       <button onClick={toggleTheme} className="theme-toggle">
         {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
       </button>
-      <nav className="column-nav">
-        <a href="#header" className="nav-link" onClick={handleLinkClick}>
-          Home
-        </a>
-        <a href="#education" className="nav-link" onClick={handleLinkClick}>
-          Education
-        </a>
-        <a href="#projects" className="nav-link" onClick={handleLinkClick}>
-          Projects
-        </a>
-        <a href="#skills" className="nav-link" onClick={handleLinkClick}>
-          Skills
-        </a>
-        <a href="#Games" className="nav-link" onClick={handleLinkClick}>
-          Games
-        </a>
-      </nav>
-    </div>
-  </div>
-);
+      </li>
+        <li>
+          <a href="#header">Home</a>
+        </li>
+        <li>
+          <a href="#education">Education</a>
+        </li>
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+        <li>
+          <a href="#Games">Games</a>
+        </li>
+      </ul>
+    </nav>
 
-  // Render mobile floating nav
-  const renderMobileFloatingNav = () => (
-    <div className="floating-nav">
-      <button onClick={toggleNav} className="floating-nav-button">
-        {isNavOpen ? '✖' : '☰'}
-      </button>
-      {isNavOpen && (
-        <div className="floating-nav-menu">
-          <button onClick={toggleTheme} className="theme-toggle">
-            {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
-          </button>
-          <a href="#header" className="nav-link" onClick={handleLinkClick}>
-          Home
-          </a>
-          <a href="#education" className="nav-link" onClick={handleLinkClick}>
-            Education
-          </a>
-          <a href="#projects" className="nav-link" onClick={handleLinkClick}>
-            Projects
-          </a>
-          <a href="#skills" className="nav-link" onClick={handleLinkClick}>
-            Skills
-          </a>
-          <a href="#Games" className="nav-link" onClick={handleLinkClick}>
-            Games
-          </a>
-        </div>
-      )}
-    </div>
-  );
-
-
-  return (
-    <div className={isDarkMode ? 'dark' : ''}>
-      {/*Navbar */}
-      {isMobile ? renderMobileFloatingNav() : renderDesktopSidebar()}
-      <button 
-      onClick={toggleSidebar} 
-      className="sidebar-toggle-btn"
-    >
-      {isSidebarVisible ? '✖' : '☰'}
+    {/* Navbar Toggle Button */}
+    <button className="nav-toggle" onClick={toggleNav}>
+      {isNavOpen ? '✖' : '☰'}
     </button>
+
+    {/* Main Content */}
       <div className="container">
         {/* Header */}
         <header id="header" className="header">
