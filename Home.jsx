@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Style.css';
+import './Home.css';
 
 const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -113,31 +113,28 @@ const HomePage = () => {
     {/* Sidebar */}
     <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
      
-    <ul className="nav-links">
-  <li>
-    <a href="#" className="nav-link">
-      <button onClick={toggleTheme} style={{ all: 'unset', width: '100%' }}>
-        {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
+      <ul className="nav-links">
+      <li>
+      <button onClick={toggleTheme} className="theme-toggle">
+        {isDarkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
       </button>
-    </a>
-  </li>
-  <li>
-    <a href="#header" className="nav-link">Home</a>
-  </li>
-  <li>
-    <a href="#education" className="nav-link">Education</a>
-  </li>
-  <li>
-    <a href="#projects" className="nav-link">Projects</a>
-  </li>
-  <li>
-    <a href="#skills" className="nav-link">Skills</a>
-  </li>
-  <li>
-    <a href="#Games" className="nav-link">Games</a>
-  </li>
-</ul>
-
+      </li>
+        <li>
+          <a href="#header">Home</a>
+        </li>
+        <li>
+          <a href="#education">Education</a>
+        </li>
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+        <li>
+          <a href="#Games">Games</a>
+        </li>
+      </ul>
     </nav>
 
     {/* Navbar Toggle Button */}

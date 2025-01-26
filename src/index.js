@@ -9,6 +9,7 @@ import TicTac from './Games/TicTacToe';
 import './index.css';
 import HomePage from './pages/Home';
 
+
 const App = () => (
   <Router>
     <Routes>

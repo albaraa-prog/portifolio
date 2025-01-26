@@ -1,0 +1,238 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(-45deg, #6c7fff, #ff5af7, #b27bff, #4d79ff);
+    background-size: 300% 300%;
+    animation: gradient 12s ease infinite;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+
+/* Reset for consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styles */
+.container {
+    padding: 20px; /* Padding inside container */
+}
+
+.container:hover {
+    transform: translateY(-10px);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    height: 100%;
+    width: 260px;
+    background-color: #ffffff;
+    border: 4px solid #000;
+    border-radius: 0 12px 12px 0; /* Added border radius on the right */
+    box-shadow: 10px 0 0 #000;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    z-index: 1050;
+    transition: left 0.3s ease;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar .nav-links {
+    list-style: none;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.sidebar .nav-links li {
+    margin: 1rem 0;
+    text-align: left;
+}
+
+/* Sidebar Navigation Link Styling */
+.sidebar .nav-links .nav-link {
+    display: block;
+    text-decoration: none;
+    top: 1rem;
+    left: 1rem;
+    background: #ffffff;
+    color: #000;
+    border: 4px solid #000;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    z-index: 1100;
+    transition: transform 0.2s;
+    font-weight: 700;
+}
+
+/* Optionally, if you want the button within the a to follow the same styling */
+.sidebar .nav-links .nav-link button {
+    all: unset;
+    width: 100%;
+    background: inherit;
+    color: inherit;
+    font-size: inherit;
+    border: inherit;
+    padding: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+
+.sidebar .nav-links a:hover {
+    background-color: #111;
+    color: #fff;
+}
+
+/* Navbar Toggle Button */
+.nav-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #ffffff;
+    color: #000;
+    border: 4px solid #000;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    z-index: 1100;
+    transition: transform 0.2s;
+}
+
+.nav-toggle:hover {
+    transform: translateY(-4px);
+}
+
+/* Header Styles */
+.header {
+    padding: 2rem;
+    border: 4px solid #000;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 10px 10px 0 #000;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #9b9b9b;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #111;
+    margin-bottom: 1.5rem;
+}
+
+.header .social-links a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 3px solid #000;
+    border-radius: 8px;
+    background-color: #e5e5e5;
+    color: #000;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.header .social-links a:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+/* Section Styles */
+section {
+    padding: 2rem;
+    border: 4px solid #000;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 0 #000;
+}
+
+section h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 4px solid #000;
+}
+
+section p {
+    color: #111;
+    line-height: 1.6;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    padding: 1.5rem;
+    border: 4px solid #000;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 0 #000;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tags */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag, .tool-tag {
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    border: 2px solid #000;
+    background-color: #e5e5e5;
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.tech-tag:hover, .tool-tag:hover {
+    background-color: #111;
+    color: #fff;
+}
