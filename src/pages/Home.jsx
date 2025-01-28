@@ -30,8 +30,6 @@ const HomePage = () => {
     institution: 'Middle East College',
     degree: 'Bachelor of Science (Hons) in Computer Science (Software Technology)',
     university: 'Coventry University',
-    gpa: 3.00,
-    period: '2020 - 2025',
   };
 
   const projects = [
@@ -63,7 +61,6 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    // Add animation to project cards
     const cards = document.querySelectorAll('.project-card');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -92,7 +89,6 @@ const HomePage = () => {
     }
   };
 
-
   useEffect(() => {
     const checkDeviceType = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -106,46 +102,42 @@ const HomePage = () => {
     };
   }, []);
 
-
-  
   return (
     <div className={`home-page ${isDarkMode ? 'dark' : ''}`}>
-    {/* Sidebar */}
-    <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
-     
-    <ul className="nav-links">
-  <li>
-    <a href="#" className="nav-link">
-      <button onClick={toggleTheme} style={{ all: 'unset', width: '100%' }}>
-        {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
+      {/* Sidebar */}
+      <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
+        <ul className="nav-links">
+          <li>
+            <a href="#" className="nav-link">
+              <button onClick={toggleTheme} style={{ all: 'unset', width: '100%' }}>
+                {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="#header" className="nav-link">Home</a>
+          </li>
+          <li>
+            <a href="#education" className="nav-link">Education</a>
+          </li>
+          <li>
+            <a href="#projects" className="nav-link">Projects</a>
+          </li>
+          <li>
+            <a href="#skills" className="nav-link">Skills</a>
+          </li>
+          <li>
+            <a href="#Games" className="nav-link">Games</a>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Navbar Toggle Button */}
+      <button className="nav-toggle" onClick={toggleNav}>
+        {isNavOpen ? '✖' : '☰'}
       </button>
-    </a>
-  </li>
-  <li>
-    <a href="#header" className="nav-link">Home</a>
-  </li>
-  <li>
-    <a href="#education" className="nav-link">Education</a>
-  </li>
-  <li>
-    <a href="#projects" className="nav-link">Projects</a>
-  </li>
-  <li>
-    <a href="#skills" className="nav-link">Skills</a>
-  </li>
-  <li>
-    <a href="#Games" className="nav-link">Games</a>
-  </li>
-</ul>
 
-    </nav>
-
-    {/* Navbar Toggle Button */}
-    <button className="nav-toggle" onClick={toggleNav}>
-      {isNavOpen ? '✖' : '☰'}
-    </button>
-
-    {/* Main Content */}
+      {/* Main Content */}
       <div className="container">
         {/* Header */}
         <header id="header" className="header">
@@ -180,6 +172,7 @@ const HomePage = () => {
               href="#"
               className="link"
               onClick={(e) => {
+                e.preventDefault();
                 handleEmailCopy();
               }}
             >
@@ -189,7 +182,6 @@ const HomePage = () => {
           <p className="location">{personalInfo.location}</p>
         </header>
 
-
         {/* Education */}
         <section id="education">
           <h2>Education</h2>
@@ -197,7 +189,6 @@ const HomePage = () => {
             <h3>{education.degree}</h3>
             <p>{education.institution}</p>
             <p>Affiliated with {education.university}</p>
-            <p>GPA: {education.gpa} | {education.period}</p>
           </div>
         </section>
 
@@ -251,14 +242,13 @@ const HomePage = () => {
         </section>
 
         {/* Games */}
-        <section id="Games">
+        <section id="Games" >
           <h2>Play Games</h2>
           <h3>2D</h3>
-          <a href="/FluppyBird" className="link">Play Fluppy Bird</a>
-          <a href="/snake" className="link">Play Snake Game</a>
-          <a href="/tictac" className="link">Play Tic Tac Toe</a>
+          <a href="/FluppyBird" className="tech-tag">Play Fluppy Bird</a>
+          <a href="/snake" className="tech-tag">Play Snake Game</a>
           <h3>3D</h3>
-          <a href="/game" className="link">Soon!</a>
+          <a href="/game" className="tech-tag">Soon!</a>
         </section>
 
       </div>
