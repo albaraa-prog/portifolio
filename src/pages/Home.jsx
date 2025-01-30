@@ -247,8 +247,10 @@ const HomePage = () => {
           <h3>2D</h3>
           <a href="/FluppyBird" className="tech-tag">Play Fluppy Bird</a>
           <a href="/snake" className="tech-tag">Play Snake Game</a>
+         {/*
           <h3>3D</h3>
           <a href="/game" className="tech-tag">Soon!</a>
+          */}
         </section>
 
       </div>
