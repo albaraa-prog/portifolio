@@ -1,8 +1,8 @@
 {
+  "homepage": "https://albaraa-prog.github.io/portifolio",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/albaraa-prog/portifolio",
   "dependencies": {
     "@react-three/fiber": "^8.17.12",
     "@splinetool/react-spline": "^4.0.0",
