@@ -98,27 +98,27 @@ const HomePage = () => {
       </button>
     </li>
     <li>
-      <a href="#header" className="nav-link" role="link">
+      <a href="#header" className="nav-link">
         Home
       </a>
     </li>
     <li>
-      <a href="#education" className="nav-link" role="link">
+      <a href="#education" className="nav-link">
         Education
       </a>
     </li>
     <li>
-      <a href="#projects" className="nav-link" role="link">
+      <a href="#projects" className="nav-link">
         Projects
       </a>
     </li>
     <li>
-      <a href="#skills" className="nav-link" role="link">
+      <a href="#skills" className="nav-link">
         Skills
       </a>
     </li>
     <li>
-      <a href="#Games" className="nav-link" role="link">
+      <a href="#Games" className="nav-link">
         Games
       </a>
     </li>
