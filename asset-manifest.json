@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/albaraa-prog/portifolio/static/css/main.bc4e9d60.css",
-    "main.js": "/albaraa-prog/portifolio/static/js/main.591139aa.js",
+    "main.js": "/albaraa-prog/portifolio/static/js/main.ed71a8f8.js",
     "index.html": "/albaraa-prog/portifolio/index.html",
     "main.bc4e9d60.css.map": "/albaraa-prog/portifolio/static/css/main.bc4e9d60.css.map",
-    "main.591139aa.js.map": "/albaraa-prog/portifolio/static/js/main.591139aa.js.map"
+    "main.ed71a8f8.js.map": "/albaraa-prog/portifolio/static/js/main.ed71a8f8.js.map"
   },
   "entrypoints": [
     "static/css/main.bc4e9d60.css",
-    "static/js/main.591139aa.js"
+    "static/js/main.ed71a8f8.js"
   ]
 }
