@@ -91,19 +91,40 @@ const HomePage = () => {
          <div className={`content ${isContentVisible ? 'fade-up' : ''}`}></div>
           {/* Sidebar */}
           <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
-            <ul className="nav-links">
-              <li>
-                <button onClick={toggleTheme} className="nav-link">
-                  {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
-                </button>
-              </li>
-              <li><a href="#header" className="nav-link">Home</a></li>
-              <li><a href="#education" className="nav-link">Education</a></li>
-              <li><a href="#projects" className="nav-link">Projects</a></li>
-              <li><a href="#skills" className="nav-link">Skills</a></li>
-              <li><a href="#Games" className="nav-link">Games</a></li>
-            </ul>
-          </nav>
+  <ul className="nav-links">
+    <li>
+      <button onClick={toggleTheme} className="nav-link" aria-label="Toggle theme">
+        {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
+      </button>
+    </li>
+    <li>
+      <a href="#header" className="nav-link" role="link">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="#education" className="nav-link" role="link">
+        Education
+      </a>
+    </li>
+    <li>
+      <a href="#projects" className="nav-link" role="link">
+        Projects
+      </a>
+    </li>
+    <li>
+      <a href="#skills" className="nav-link" role="link">
+        Skills
+      </a>
+    </li>
+    <li>
+      <a href="#Games" className="nav-link" role="link">
+        Games
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
           {/* Navbar Toggle Button */}
           <button className="nav-toggle" onClick={toggleNav}>
