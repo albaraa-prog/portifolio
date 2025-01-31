@@ -4,14 +4,14 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './index.css';
 import HomePage from './pages/Home';
 
+
 const App = () => (
-  <Router basename="/portfolio">
+  <Router basename="/portifolio" >
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage/>} />
     </Routes>
   </Router>
 );
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

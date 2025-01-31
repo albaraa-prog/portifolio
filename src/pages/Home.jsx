@@ -98,27 +98,27 @@ const HomePage = () => {
       </button>
     </li>
     <li>
-      <a href="#header" className="nav-link">
-        Home
+      <a href="portifolio/#header" className="nav-link">
+        About
       </a>
     </li>
     <li>
-      <a href="#education" className="nav-link">
+      <a href="portifolio/#education" className="nav-link">
         Education
       </a>
     </li>
     <li>
-      <a href="#projects" className="nav-link">
+      <a href="portifolio/#projects" className="nav-link">
         Projects
       </a>
     </li>
     <li>
-      <a href="#skills" className="nav-link">
+      <a href="portifolio/#skills" className="nav-link">
         Skills
       </a>
     </li>
     <li>
-      <a href="#Games" className="nav-link">
+      <a href="portifolio/#Games" className="nav-link">
         Games
       </a>
     </li>
