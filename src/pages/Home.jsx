@@ -4,14 +4,31 @@ import './Style.css';
 const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Preloader state
+  const [isContentVisible, setIsContentVisible] = useState(false);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+      setTimeout(() => {
+        setIsContentVisible(true);
+      }, 300); // Small delay to ensure smooth transition
+    }, 3000);
+  }, []);
+  // Toggle Sidebar Navigation
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
   };
 
-  const toggleNav = () => {
-    setIsNavOpen((prevState) => !prevState);
+  // Toggle Dark/Light Mode
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  // Copy Email to Clipboard
+  const handleEmailCopy = () => {
+    navigator.clipboard.writeText(personalInfo.contact.email);
+    alert('Email copied to clipboard!');
   };
 
   const personalInfo = {
@@ -57,203 +74,114 @@ const HomePage = () => {
 
   const skills = {
     programmingLanguages: ['Java', 'Python', 'Dart', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#'],
-    developmentTools: ['Flutter', 'Android Studio', 'React', 'Django', 'Firebase', 'MongoDB', 'GitHub', 'TenserFlow', '.Net'],
+    developmentTools: ['Flutter', 'Android Studio', 'VS Code', 'React', 'Django', 'Firebase', 'MongoDB', 'GitHub', 'TenserFlow', '.Net'],
   };
-
-  useEffect(() => {
-    const cards = document.querySelectorAll('.project-card');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    cards.forEach((card) => observer.observe(card));
-
-    return () => {
-      cards.forEach((card) => observer.unobserve(card));
-    };
-  }, []);
-
-  const handleEmailCopy = () => {
-    try {
-      navigator.clipboard.writeText(personalInfo.contact.email);
-      alert('Email copied to clipboard!');
-    } catch (error) {
-      console.error('Failed to copy email', error);
-      alert('Unable to copy email. Please copy manually.');
-    }
-  };
-
-  useEffect(() => {
-    const checkDeviceType = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkDeviceType();
-    window.addEventListener('resize', checkDeviceType);
-
-    return () => {
-      window.removeEventListener('resize', checkDeviceType);
-    };
-  }, []);
 
   return (
     <div className={`home-page ${isDarkMode ? 'dark' : ''}`}>
-      {/* Sidebar */}
-      <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
-        <ul className="nav-links">
-          <li>
-            <a href="#" className="nav-link">
-              <button onClick={toggleTheme} style={{ all: 'unset', width: '100%' }}>
-                {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
-              </button>
-            </a>
-          </li>
-          <li>
-            <a href="#header" className="nav-link">Home</a>
-          </li>
-          <li>
-            <a href="#education" className="nav-link">Education</a>
-          </li>
-          <li>
-            <a href="#projects" className="nav-link">Projects</a>
-          </li>
-          <li>
-            <a href="#skills" className="nav-link">Skills</a>
-          </li>
-          <li>
-            <a href="#Games" className="nav-link">Games</a>
-          </li>
-        </ul>
-      </nav>
+      {/* Preloader Animation */}
+      {isLoading && (
+        <div className="preloader">
+          <h1 className="preloader-text">Jack of all cards, master of one</h1>
+        </div>
+      )}
 
-      {/* Navbar Toggle Button */}
-      <button className="nav-toggle" onClick={toggleNav}>
-        {isNavOpen ? '✖' : '☰'}
-      </button>
+      {!isLoading && (
+        <>
+         <div className={`content ${isContentVisible ? 'fade-up' : ''}`}></div>
+          {/* Sidebar */}
+          <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
+            <ul className="nav-links">
+              <li>
+                <button onClick={toggleTheme} className="nav-link">
+                  {isDarkMode ? 'Light Mode ☀' : 'Dark Mode 🌙'}
+                </button>
+              </li>
+              <li><a href="#header" className="nav-link">Home</a></li>
+              <li><a href="#education" className="nav-link">Education</a></li>
+              <li><a href="#projects" className="nav-link">Projects</a></li>
+              <li><a href="#skills" className="nav-link">Skills</a></li>
+              <li><a href="#Games" className="nav-link">Games</a></li>
+            </ul>
+          </nav>
 
-      {/* Main Content */}
-      <div className="container">
-        {/* Header */}
-        <header id="header" className="header">
-          <h1>{personalInfo.name}</h1>
-          <p>{personalInfo.title}</p>
-          <div className="social-links">
-            <a
-              href={personalInfo.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={personalInfo.contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              GitHub
-            </a>
-            <a
-              href={personalInfo.contact.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="link"
-              onClick={(e) => {
-                e.preventDefault();
-                handleEmailCopy();
-              }}
-            >
-              {personalInfo.contact.email}
-            </a>
-          </div>
-          <p className="location">{personalInfo.location}</p>
-        </header>
+          {/* Navbar Toggle Button */}
+          <button className="nav-toggle" onClick={toggleNav}>
+            {isNavOpen ? '✖' : '☰'}
+          </button>
 
-        {/* Education */}
-        <section id="education">
-          <h2>Education</h2>
-          <div>
-            <h3>{education.degree}</h3>
-            <p>{education.institution}</p>
-            <p>Affiliated with {education.university}</p>
-          </div>
-        </section>
-
-        {/* Projects */}
-        <section id="projects">
-          <h2>Projects</h2>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="project-card"
-                style={{
-                  "--delay": `${index * 0.2}s`, // Stagger animation by 0.2s for each card
-                }}
-              >
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-                <div className="tags-container">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          {/* Main Content */}
+          <div className="container">
+            {/* Header */}
+            <header id="header" className="header">
+              <h1>{personalInfo.name}</h1>
+              <p>{personalInfo.title}</p>
+              <div className="social-links">
+                <a href={personalInfo.contact.linkedin} target="_blank" rel="noopener noreferrer" className="link">LinkedIn</a>
+                <a href={personalInfo.contact.github} target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
+                <a href={personalInfo.contact.instagram} target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
+                <a href="#" className="link" onClick={(e) => { e.preventDefault(); handleEmailCopy(); }}>
+                  {personalInfo.contact.email}
+                </a>
               </div>
-            ))}
+              <p className="location">{personalInfo.location}</p>
+            </header>
+
+            {/* Education Section */}
+            <section id="education">
+              <h2>Education</h2>
+              <div>
+                <h3>{education.degree}</h3>
+                <p>{education.institution}</p>
+                <p>{education.university}</p>
+              </div>
+            </section>
+
+            {/* Projects Section */}
+            <section id="projects">
+              <h2>Projects</h2>
+              <div className="projects-grid">
+                {projects.map((project, index) => (
+                  <div key={index} className="project-card" style={{ "--delay": `${index * 0.2}s` }}>
+                    <h3>{project.name}</h3>
+                    <p>{project.description}</p>
+                    <div className="tags-container">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Skills Section */}
+            <section id="skills">
+              <h2>Skills</h2>
+              <h3>Programming Languages</h3>
+              <div className="tags-container">
+                {skills.programmingLanguages.map((lang, index) => (
+                  <span key={index} className="tech-tag">{lang}</span>
+                ))}
+              </div>
+              <h3>Development Tools</h3>
+              <div className="tags-container">
+                {skills.developmentTools.map((tool, index) => (
+                  <span key={index} className="tool-tag">{tool}</span>
+                ))}
+              </div>
+            </section>
+
+            {/* Games Section */}
+            <section id="Games">
+              <h2>Play A Game</h2>
+              <h3>2D</h3>
+              
+              <a href="/snake" className="tech-tag">Play Snake Game</a>
+            </section>
           </div>
-        </section>
-
-        {/* Skills */}
-        <section id="skills">
-          <h2>Skills</h2>
-          <div>
-            <h3>Programming Languages</h3>
-            <div className="tags-container">
-              {skills.programmingLanguages.map((lang, index) => (
-                <span key={index} className="tech-tag">
-                  {lang}
-                </span>
-              ))}
-            </div>
-            <h3>Development Tools</h3>
-            <div className="tags-container">
-              {skills.developmentTools.map((tool, index) => (
-                <span key={index} className="tool-tag">
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Games */}
-        <section id="Games" >
-          <h2>Play Games</h2>
-          <h3>2D</h3>
-          <a href="/FluppyBird" className="tech-tag">Play Fluppy Bird</a>
-          <a href="/snake" className="tech-tag">Play Snake Game</a>
-         {/*
-          <h3>3D</h3>
-          <a href="/game" className="tech-tag">Soon!</a>
-          */}
-        </section>
-
-      </div>
+        </>
+      )}
     </div>
   );
 };

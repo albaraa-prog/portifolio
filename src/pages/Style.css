@@ -241,8 +241,9 @@ section h2, #projects-title {
     text-align: center;
 }
 
+/* Heading Adjustments */
 .header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
     font-weight: 900;
     color: #000;
     margin-bottom: 0.5rem;
@@ -250,33 +251,35 @@ section h2, #projects-title {
     text-shadow: 2px 2px 0 #9b9b9b;
 }
 
-.header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 0.5rem;
-}
-
+/* Dark Mode Heading */
 .dark .header h1 {
     color: #ffffff;
 }
 
-.dark .header p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-}
-
+/* Paragraph Styling */
 .header p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.1rem); /* Responsive font */
     color: #000000;
     margin-bottom: 1.5rem;
 }
 
+/* Dark Mode Paragraph */
+.dark .header p {
+    color: #ffffff;
+}
+
+/* Social Links Container */
+.header .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem; /* Space between icons */
+}
+
+/* Social Links */
 .header .social-links a {
     text-decoration: none;
     display: inline-block;
-    margin: 0 0.5rem;
     padding: 0.5rem 1rem;
     border: 3px solid #000;
     border-radius: 8px;
@@ -286,10 +289,31 @@ section h2, #projects-title {
     transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Hover Effects */
 .header .social-links a:hover {
     background-color: #000;
     color: #fff;
     transform: translateY(-4px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem;
+    }
+
+    .header h1 {
+        font-size: clamp(1.75rem, 4vw, 2rem); /* Adjusted for mobile */
+    }
+
+    .header p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+
+    .header .social-links {
+        flex-direction: column; /* Stack icons */
+        align-items: center;
+    }
 }
 
 /* Section Styles */
@@ -392,3 +416,63 @@ section p {
 .dark .header {
     background-color: #212121;
 }
+
+/* Preloader Animation */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #579777, #5761cf, #584c83, #3e6993);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+    animation: fadeOut 3s ease-in-out forwards;
+}
+
+.preloader-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Scroll Up Animation */
+.content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.content.fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section Animations */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.content.fade-up .section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
