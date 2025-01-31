@@ -125,7 +125,6 @@ const HomePage = () => {
   </ul>
 </nav>
 
-
           {/* Navbar Toggle Button */}
           <button className="nav-toggle" onClick={toggleNav}>
             {isNavOpen ? '✖' : '☰'}
@@ -191,14 +190,6 @@ const HomePage = () => {
                   <span key={index} className="tool-tag">{tool}</span>
                 ))}
               </div>
-            </section>
-
-            {/* Games Section */}
-            <section id="Games">
-              <h2>Play A Game</h2>
-              <h3>2D</h3>
-              
-              <a href="/snake" className="tech-tag">Play Snake Game</a>
             </section>
           </div>
         </>
