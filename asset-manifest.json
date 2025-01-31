@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/albaraa-prog/portifolio/static/css/main.bc4e9d60.css",
-    "main.js": "/albaraa-prog/portifolio/static/js/main.b771b2fd.js",
-    "index.html": "/albaraa-prog/portifolio/index.html",
-    "main.bc4e9d60.css.map": "/albaraa-prog/portifolio/static/css/main.bc4e9d60.css.map",
-    "main.b771b2fd.js.map": "/albaraa-prog/portifolio/static/js/main.b771b2fd.js.map"
+    "main.css": "/portifolio/static/css/main.bc4e9d60.css",
+    "main.js": "/portifolio/static/js/main.b771b2fd.js",
+    "index.html": "/portifolio/index.html",
+    "main.bc4e9d60.css.map": "/portifolio/static/css/main.bc4e9d60.css.map",
+    "main.b771b2fd.js.map": "/portifolio/static/js/main.b771b2fd.js.map"
   },
   "entrypoints": [
     "static/css/main.bc4e9d60.css",
