@@ -11,7 +11,7 @@ import HomePage from './pages/Home';
 
 
 const App = () => (
-  <Router>
+  <Router basename="/portifolio">
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/tictac" element={<TicTac />} />
