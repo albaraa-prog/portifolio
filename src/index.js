@@ -5,7 +5,7 @@ import './index.css';
 import HomePage from './pages/Home';
 
 const App = () => (
-  <Router>
+  <Router basename="/portfolio">
     <Routes>
       <Route path="/" element={<HomePage />} />
     </Routes>
