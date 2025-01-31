@@ -11,7 +11,7 @@ import HomePage from './pages/Home';
 
 
 const App = () => (
-  <Router>
+  <Router basename="/repository-name">
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/tictac" element={<TicTac />} />
@@ -21,7 +21,6 @@ const App = () => (
     </Routes>
   </Router>
 );
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
