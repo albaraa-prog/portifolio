@@ -117,11 +117,6 @@ const HomePage = () => {
         Skills
       </a>
     </li>
-    <li>
-      <a href="portifolio/#Games" className="nav-link">
-        Games
-      </a>
-    </li>
   </ul>
 </nav>
 
