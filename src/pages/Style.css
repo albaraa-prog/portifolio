@@ -204,9 +204,27 @@ section h2, #projects-title {
     }
 
     .theme-toggle {
-        font-size: 0.875rem;
-        padding: 0.4rem 0.8rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: #ffffff;
+        color: #000;
+        border: 4px solid #000;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        box-shadow: 4px 4px 0 #000;
+        cursor: pointer;
+        font-weight: 700;
+        transition: transform 0.2s;
     }
+    
+    .theme-toggle:hover {
+        transform: translateY(-4px);
+        background-color: #000;
+        color: #fff;
+    }
+    
 }
 
 /* Navbar Toggle Button */
@@ -298,23 +316,46 @@ section h2, #projects-title {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .header {
-        padding: 1.5rem;
+    .container {
+        width: 100%;
+        padding: 1rem;
     }
 
-    .header h1 {
-        font-size: clamp(1.75rem, 4vw, 2rem); /* Adjusted for mobile */
+    .project-card {
+        width: 100%;
+        max-width: 100%;
     }
 
-    .header p {
-        font-size: clamp(0.9rem, 3vw, 1rem);
+    .sidebar {
+        width: 100%;
+        left: -100%;
+        border-radius: 0;
     }
 
-    .header .social-links {
-        flex-direction: column; /* Stack icons */
-        align-items: center;
+    .sidebar.open {
+        left: 0;
+    }
+
+    .nav-toggle {
+        left: 0.5rem;
     }
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section, .header {
+    width: 100%;
+    padding: 1.5rem;
+}
+.header .social-links a,
+.button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
 
 /* Section Styles */
 section {
