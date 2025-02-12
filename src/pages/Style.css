@@ -367,9 +367,9 @@ section p {
 
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .project-card {
@@ -379,8 +379,9 @@ section p {
     background-color: #ffffff;
     box-shadow: 6px 6px 0 #000;
     transition: transform 0.3s;
-    width: 100%;
-    max-width: 100%;
+    flex: 1 1 300px; /* Ensures responsiveness */
+    max-width: 90%;
+    margin: 10px;
 }
 
 .project-card:hover {
