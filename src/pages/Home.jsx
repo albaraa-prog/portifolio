@@ -176,7 +176,7 @@ const HomePage = () => {
               <h3>Programming Languages</h3>
               <div className="tags-container">
                 {skills.programmingLanguages.map((lang, index) => (
-                  <span key={index} className="tech-tag">{lang}</span>
+                  <span key={index} className="tool-tag">{lang}</span>
                 ))}
               </div>
               <h3>Development Tools</h3>

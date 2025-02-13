@@ -169,25 +169,6 @@ body {
     background-color: #1a1a1a;
 }
 
-/* Tag Styles */
-.tech-tag, .tool-tag {
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 3px solid #000;
-    border-radius: 8px;
-    background-color: #e5e5e5;
-    color: #000;
-    font-weight: 700;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-bottom: 0.5rem; /* Added space below */
-}
-
-.tech-tag:hover, .tool-tag:hover {
-    transform: translateY(-2px);
-}
-
 
 .dark .project-card {
     background-color: #1a1d21;
@@ -398,13 +379,6 @@ section p {
     flex-grow: 1;
 }
 
-/* Technology Tags Container */
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
-}
 
 /* Hover Effects */
 @media (hover: hover) {
@@ -484,9 +458,39 @@ section p {
     border: 2px solid #000;
     border-radius: 6px;
     padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #1a1a1a;
+}
+
+/* Technology Tags Container */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+
+/* Tag Styles */
+.tech-tag, .tool-tag {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 0.3rem;
+    padding: 0.3rem 0.5rem;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #e5e5e5;
+    color: #000;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 0.5rem; /* Added space below */
+}
+
+
+
+.tech-tag:hover, .tool-tag:hover {
+    transform: translateY(-2px);
 }
 
 
@@ -519,32 +523,6 @@ section p {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Tags Container */
-.tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.tech-tag {
-    background-color: #f0f0f0;
-    border: 2px solid #000;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0;
-    transition: background-color 0.3s ease;
-}
-
-
-.tech-tag:hover, .tool-tag:hover {
-    background-color: #111;
-    color: #fff;
 }
 
 /* Dark Mode Styles */
@@ -658,7 +636,7 @@ body {
 /* Enhanced Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
@@ -700,7 +678,7 @@ section h2 {
     }
 
     .project-card {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 }
 
