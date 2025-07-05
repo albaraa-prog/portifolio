@@ -2,6 +2,12 @@
 
 A modern, responsive portfolio web application built with React. Showcases personal information, education, projects, and skills, with a custom design system for consistent style and accessibility.
 
+## This is a work in progress, and I will be updating it as I go along.
+
+## Live Demo Link:
+
+## https://albaraa-prog.github.io/portifolio/
+
 ## Table of Contents
 
 - [Features](#features)

@@ -860,3 +860,86 @@ img {
     padding: 1.25rem;
   }
 }
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.35);
+  z-index: 1040;
+}
+
+.animated-intro {
+  animation: introFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ede5b6;
+  text-shadow: 0 4px 24px #5761cf, 2px 2px 0 #000;
+  margin-bottom: 0;
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: scale(0.85) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.type-cursor {
+  display: inline-block;
+  width: 1ch;
+  color: #5761cf;
+  animation: blink 1s steps(2, start) infinite;
+  font-weight: 900;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.preloader-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ede5b6;
+  text-shadow: 0 4px 24px #5761cf, 2px 2px 0 #000;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .animated-intro, .preloader-text {
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.toast-message {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #222831;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.4s;
+  cursor: pointer;
+}
+.toast-message.visible {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .toast-message, .toast-message.visible {
+    right: 0.5rem;
+    left: 0.5rem;
+    top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+}

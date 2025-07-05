@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaBookOpen, FaBriefcase, FaCertificate, FaCode, FaStar } from 'react-icons/fa';
 import photo from '../assets/photo.png';
 import './Style.css';
 
 // Toast component
 function Toast({ message, onClose }) {
-  if (!message) return null;
   return (
-    <div className="toast-message" onClick={onClose}>
+    <div className={`toast-message${message ? ' visible' : ''}`} onClick={onClose}>
       {message}
     </div>
   );
@@ -18,6 +17,9 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true); // Preloader state
   const [isContentVisible, setIsContentVisible] = useState(false);
   const [toast, setToast] = useState("");
+  const [typedText, setTypedText] = useState("");
+  const introText = "Jack of all cards, master of one";
+  const preloaderRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,6 +29,40 @@ const HomePage = () => {
       }, 300); // Small delay to ensure smooth transition
     }, 3000);
   }, []);
+
+  // Typewriter effect for preloader
+  useEffect(() => {
+    let idx = 0;
+    let timeout;
+    function type() {
+      setTypedText(introText.slice(0, idx));
+      if (idx < introText.length) {
+        idx++;
+        timeout = setTimeout(type, 60);
+      }
+    }
+    if (isLoading) {
+      setTypedText("");
+      type();
+    }
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
+
+  // Sidebar close on outside click
+  useEffect(() => {
+    function handleClick(e) {
+      if (isNavOpen && preloaderRef.current && !preloaderRef.current.contains(e.target)) {
+        setIsNavOpen(false);
+      }
+    }
+    if (isNavOpen) {
+      document.addEventListener('mousedown', handleClick);
+    } else {
+      document.removeEventListener('mousedown', handleClick);
+    }
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [isNavOpen]);
+
   // Toggle Sidebar Navigation
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -109,7 +145,7 @@ const HomePage = () => {
         {/* Preloader Animation */}
         {isLoading && (
           <div className="preloader">
-            <h1 className="preloader-text">Jack of all cards, master of one</h1>
+            <h1 className="preloader-text animated-intro">{typedText}<span className="type-cursor">|</span></h1>
           </div>
         )}
 
@@ -118,7 +154,7 @@ const HomePage = () => {
             <div className={`content ${isContentVisible ? 'fade-up' : ''}`}></div>
             <Toast message={toast} onClose={() => setToast("")} />
             {/* Sidebar */}
-            <nav className={`sidebar ${isNavOpen ? 'open' : ''}`}>
+            <nav ref={preloaderRef} className={`sidebar ${isNavOpen ? 'open' : ''}`}>
               <ul className="nav-links">
                 <li>
                   <a href="portifolio/#header" className="nav-link">
@@ -296,6 +332,7 @@ const HomePage = () => {
                 </div>
               </section>
             </div>
+            {isNavOpen && <div className="sidebar-overlay" onClick={() => setIsNavOpen(false)}></div>}
           </>
         )}
       </div>
