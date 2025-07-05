@@ -14,9 +14,7 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(-45deg, #579777, #5761cf, #584c83, #3e6993);
-    background-size: 300% 300%;
-    animation: gradient 5s ease infinite;
+    background: transparent;
     padding: 2rem;
     overflow-x: hidden;
 }
@@ -552,18 +550,17 @@ section p {
 
 /* Preloader Animation */
 .preloader {
+    z-index: 10000;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #579777, #5761cf, #584c83, #3e6993);
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    z-index: 9999;
-    animation: fadeOut 3s ease-in-out forwards;
+    background: transparent;
+    /* animation: fadeOut 3s ease-in-out forwards; */
 }
 
 .preloader-text {
@@ -737,12 +734,12 @@ img {
 }
 
 .space-bg {
+  z-index: 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
@@ -871,9 +868,8 @@ img {
   z-index: 1040;
 }
 
-.animated-intro {
-  animation: introFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
-  font-size: 2.5rem;
+.animated-intro, .preloader-text {
+  font-size: clamp(1.5rem, 6vw, 3rem);
   font-weight: 900;
   letter-spacing: 2px;
   color: #ede5b6;
@@ -897,21 +893,6 @@ img {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-.preloader-text {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #ede5b6;
-  text-shadow: 0 4px 24px #5761cf, 2px 2px 0 #000;
-  margin-bottom: 0;
-}
-
-@media (max-width: 600px) {
-  .animated-intro, .preloader-text {
-    font-size: 1.5rem;
-    padding: 0 0.5rem;
-  }
 }
 
 .toast-message {
@@ -942,4 +923,10 @@ img {
     padding: 0.75rem 1rem;
     font-size: 1rem;
   }
+}
+
+.preloader--hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
 }

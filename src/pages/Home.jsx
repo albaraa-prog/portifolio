@@ -18,40 +18,53 @@ const HomePage = () => {
   const [isContentVisible, setIsContentVisible] = useState(false);
   const [toast, setToast] = useState("");
   const [typedText, setTypedText] = useState("");
+  const typingDelay = 80;
   const introText = "Jack of all cards, master of one";
   const preloaderRef = useRef();
+  const sidebarRef = useRef();
+  const toggleRef = useRef();
+  const [preloaderHide, setPreloaderHide] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      setTimeout(() => {
-        setIsContentVisible(true);
-      }, 300); // Small delay to ensure smooth transition
-    }, 3000);
-  }, []);
-
-  // Typewriter effect for preloader
-  useEffect(() => {
+    setTypedText("");
     let idx = 0;
     let timeout;
     function type() {
       setTypedText(introText.slice(0, idx));
       if (idx < introText.length) {
         idx++;
-        timeout = setTimeout(type, 60);
+        timeout = setTimeout(type, typingDelay);
       }
     }
     if (isLoading) {
-      setTypedText("");
       type();
     }
     return () => clearTimeout(timeout);
   }, [isLoading]);
 
+  useEffect(() => {
+    // Wait for the typewriter effect to finish before hiding preloader
+    const totalTime = introText.length * typingDelay + 400; // buffer for smoothness
+    const timer = setTimeout(() => {
+      setPreloaderHide(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsContentVisible(true);
+      }, 600); // match fade-out duration
+    }, totalTime);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Sidebar close on outside click
   useEffect(() => {
     function handleClick(e) {
-      if (isNavOpen && preloaderRef.current && !preloaderRef.current.contains(e.target)) {
+      if (
+        isNavOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(e.target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(e.target)
+      ) {
         setIsNavOpen(false);
       }
     }
@@ -144,7 +157,7 @@ const HomePage = () => {
       <div className="home-page dark">
         {/* Preloader Animation */}
         {isLoading && (
-          <div className="preloader">
+          <div className={`preloader${preloaderHide ? ' preloader--hide' : ''}`}>
             <h1 className="preloader-text animated-intro">{typedText}<span className="type-cursor">|</span></h1>
           </div>
         )}
@@ -154,7 +167,7 @@ const HomePage = () => {
             <div className={`content ${isContentVisible ? 'fade-up' : ''}`}></div>
             <Toast message={toast} onClose={() => setToast("")} />
             {/* Sidebar */}
-            <nav ref={preloaderRef} className={`sidebar ${isNavOpen ? 'open' : ''}`}>
+            <nav ref={sidebarRef} className={`sidebar ${isNavOpen ? 'open' : ''}`}>
               <ul className="nav-links">
                 <li>
                   <a href="portifolio/#header" className="nav-link">
@@ -190,7 +203,13 @@ const HomePage = () => {
             </nav>
 
             {/* Navbar Toggle Button */}
-            <button className="nav-toggle" onClick={toggleNav}>
+            <button
+              ref={toggleRef}
+              className="nav-toggle"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              style={isNavOpen ? { zIndex: 1101 } : {}}
+              aria-label={isNavOpen ? 'Close sidebar' : 'Open sidebar'}
+            >
               {isNavOpen ? '✖' : '☰'}
             </button>
 
