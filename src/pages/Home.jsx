@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaBookOpen, FaBriefcase, FaCertificate, FaCode, FaStar } from 'react-icons/fa';
 import photo from '../assets/photo.png';
 import './Style.css';
@@ -19,7 +19,7 @@ const HomePage = () => {
   const [toast, setToast] = useState("");
   const [typedText, setTypedText] = useState("");
   const typingDelay = 80;
-  const introText = "Jack of all cards, master of one";
+  const introText = "Jack of all trades, master of one";
   const preloaderRef = useRef();
   const sidebarRef = useRef();
   const toggleRef = useRef();
@@ -94,7 +94,7 @@ const HomePage = () => {
 
   const personalInfo = {
     name: 'Al Baraa Mohammed Al Harthi',
-    title: 'Software Engineer | AI/ML |Mobile & Cross-Platform App Developer',
+    title: 'Computer Science Student | Software Engineer | Rihal’s Spark to Code Intern',
     location: 'Muscat, Oman',
     contact: {
       email: 'albraa9021@gmail.com',
@@ -108,6 +108,7 @@ const HomePage = () => {
     institution: 'Middle East College',
     degree: 'Bachelor of Science (Hons) in Computer Science (Software Technology)',
     university: 'Coventry University',
+    sociaty: 'Technical Lead of the GDGC (Google Developer Student Club)',
   };
 
   const projects = [
@@ -130,6 +131,16 @@ const HomePage = () => {
       name: 'Water Ordering & Delivery App',
       technologies: ['Java', 'Android Studio', 'Firebase'],
       description: 'Mobile application for users to order and track water deliveries.',
+    },
+    {
+      name: 'AutoReel',
+      technologies: ['Python', 'Giminai API', 'AssemblyAI API'],
+      description: 'Developed a python script that generates video reels from YouTube videos using Giminai and AssemblyAI APIs. With subtitles, images, and audio.',
+    },
+    {
+      name: 'Video Downloader',
+      technologies: ['Python'],
+      description: 'Created a Python script to download videos from YouTube, supporting various formats and resolutions.',   
     },
   ];
 
@@ -246,14 +257,14 @@ const HomePage = () => {
                 <h2><FaBriefcase size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />Experience</h2>
                 <div className="experience-cards">
                   <div className="exp-card">
-                    <span className="exp-chip">Oman Archive</span>
-                    <span className="exp-role">Full-Stack developer Intern</span>
+                    <span className="exp-chip">Rihal</span>
+                    <span className="exp-role">Software Engineer Intern</span>
                     <span className="exp-date">2025 - present</span>
                   </div>
                   <div className="exp-card">
-                    <span className="exp-chip">Google Developers Group</span>
-                    <span className="exp-role">Technical Lead</span>
-                    <span className="exp-date">2024 - present</span>
+                    <span className="exp-chip">Oman Archive</span>
+                    <span className="exp-role">Full-Stack developer Intern</span>
+                    <span className="exp-date">2025 - 2025 (3 Months)</span>
                   </div>
                   <div className="exp-card">
                     <span className="exp-chip">Buslah</span>
