@@ -333,32 +333,32 @@ const HomePage = () => {
             <nav ref={sidebarRef} className={`sidebar ${isNavOpen ? 'open' : ''}`} role="navigation" aria-label="Main navigation">
               <ul className="nav-links">
                 <li>
-                  <a href="portifolio/#header" className="nav-link" aria-describedby="about-desc">
+                  <a href="#header" className="nav-link" aria-describedby="about-desc">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="portifolio/#education" className="nav-link" aria-describedby="education-desc">
+                  <a href="#education" className="nav-link" aria-describedby="education-desc">
                     Education
                   </a>
                 </li>
                 <li>
-                  <a href="portifolio/#experience" className="nav-link" aria-describedby="experience-desc">
+                  <a href="#experience" className="nav-link" aria-describedby="experience-desc">
                     Experience
                   </a>
                 </li>
                 <li>
-                  <a href="portifolio/#projects" className="nav-link" aria-describedby="projects-desc">
+                  <a href="#projects" className="nav-link" aria-describedby="projects-desc">
                     Projects
                   </a>
                 </li>
                 <li>
-                  <a href="portifolio/#skills" className="nav-link" aria-describedby="skills-desc">
+                  <a href="#skills" className="nav-link" aria-describedby="skills-desc">
                     Skills
                   </a>
                 </li>
                 <li>
-                  <a href="portifolio/#certifications" className="nav-link" aria-describedby="certifications-desc">
+                  <a href="#certifications" className="nav-link" aria-describedby="certifications-desc">
                     Licenses & Certifications
                   </a>
                 </li>
