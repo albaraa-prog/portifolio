@@ -235,7 +235,7 @@ const HomePage = () => {
 
   const personalInfo = {
     name: 'Al Baraa Mohammed Al Harthi',
-    title: 'Computer Science Student | Software Engineer | Rihal\'s Spark to Code Intern',
+    title: 'Computer Science Student | Software Engineer | AI/ML | Game Development',
     location: 'Muscat, Oman',
     contact: {
       email: 'albraa9021@gmail.com',
@@ -254,6 +254,11 @@ const HomePage = () => {
 
   const projects = [
     {
+      name: 'Rock Classification using CNN',
+      technologies: ['Python', 'TensorFlow', 'Keras', 'OpenCV', 'NumPy', 'Pandas'],
+      description: 'Developed a Convolutional Neural Network (CNN) model to classify different types of rocks with high accuracy.',
+    },
+    {
       name: 'Omani Specialties Mobile App',
       technologies: ['Java', 'Android Studio', 'Firebase'],
       description: 'Developed a mobile app to help users purchase Omani specialties, enhancing local market reach.',
@@ -262,6 +267,11 @@ const HomePage = () => {
       name: 'Sports Facility Booking App',
       technologies: ['Dart', 'Flutter', 'MongoDB', 'Firebase', 'React', 'AI/ML'],
       description: 'Cross-platform mobile app with booking, community interaction, chat, recommendation systems, and dashboard.',
+    },
+    {
+      name: 'Appointment Booking System',
+      technologies: ['Java', 'Spring Boot', 'React', 'MySQL'],
+      description: 'Created an appointment booking as a team  for a general purpose, allowing users to schedule and manage appointments.',
     },
     {
       name: 'URL Scanner',
@@ -287,7 +297,7 @@ const HomePage = () => {
 
   const skills = {
     programmingLanguages: ['Java', 'Python', 'Dart', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#'],
-    developmentTools: ['Flutter', 'Android Studio', 'VS Code', 'React', 'Django', 'Firebase', 'MongoDB', 'GitHub', 'TensorFlow', '.Net'],
+    developmentTools: ['Flutter', 'Android Studio', 'VS Code', 'React', 'Django', 'Firebase', 'MongoDB', 'GitHub', 'TensorFlow', '.Net', 'Unity', 'Spring Boot', 'MySQL'],
   };
 
   return (
@@ -446,9 +456,14 @@ const HomePage = () => {
                 </h2>
                 <div className="experience-cards">
                   <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                    <span className="exp-chip" itemProp="hiringOrganization">AL NAHDA Training Institute ( London Academy)</span>
+                    <span className="exp-role" itemProp="jobTitle">Game Developer</span>
+                    <time className="exp-date" itemProp="datePublished">2025 - present</time>
+                  </article>
+                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Rihal</span>
                     <span className="exp-role" itemProp="jobTitle">Software Engineer Intern</span>
-                    <time className="exp-date" itemProp="datePublished">2025 - present</time>
+                    <time className="exp-date" itemProp="datePublished">2025 - 2025 (2 Months)</time>
                   </article>
                   <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Oman Archive</span>
