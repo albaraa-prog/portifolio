@@ -106,8 +106,9 @@ const HomePage = () => {
   const [isContentVisible, setIsContentVisible] = useState(false);
   const [toast, setToast] = useState('');
   const [typedText, setTypedText] = useState('');
+  const [isAppBarHidden, setIsAppBarHidden] = useState(false);
 
-  const introText = 'Jack of all trades, master of one';
+  const introText = '';
   const typingDelay = 80;
 
   // refs
@@ -186,6 +187,40 @@ const HomePage = () => {
     programmingLanguages: ['Java', 'Python', 'Dart', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#'],
     developmentTools: ['Flutter', 'Android Studio', 'VS Code', 'React', 'Django', 'Firebase', 'MongoDB', 'GitHub', 'TensorFlow', '.Net', 'Unity', 'Spring Boot', 'MySQL'],
   };
+
+  // Learning Roadmap
+  const roadmap = [
+    {
+      year: '2021',
+      title: 'Foundation Year',
+      technologies: ['Java', 'Python', 'MySQL'],
+      description: 'Started my programming journey with core languages and database fundamentals'
+    },
+    {
+      year: '2022',
+      title: 'Mobile Development',
+      technologies: ['Java', 'Android Studio', 'Firebase'],
+      description: 'Dived into native mobile app development and cloud services'
+    },
+    {
+      year: '2023',
+      title: 'Cross-Platform & Modern Stack',
+      technologies: ['Flutter', 'MongoDB', 'Supabase'],
+      description: 'Mastered cross-platform development and modern database solutions'
+    },
+    {
+      year: '2024',
+      title: 'Web & AI/ML',
+      technologies: ['React', 'Machine Learning'],
+      description: 'Explored modern web development and artificial intelligence'
+    },
+    {
+      year: '2025',
+      title: 'Backend Mastery',
+      technologies: ['Spring Boot', 'Flask'],
+      description: 'Advanced backend development with enterprise frameworks'
+    }
+  ];
 
   // Certifications
   const certifications = [
@@ -309,6 +344,28 @@ const HomePage = () => {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [isNavOpen]);
 
+  // Hide app bar on scroll down
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsAppBarHidden(true);
+      } else {
+        // Scrolling up
+        setIsAppBarHidden(false);
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Stars background (memoized)
   const stars = useMemo(() =>
     Array.from({ length: 80 }).map(() => ({
@@ -323,6 +380,11 @@ const HomePage = () => {
       <SEOHead />
 
       <div className="space-bg">
+        <div className="wave">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         {stars.map((s, i) => (
           <div
             key={i}
@@ -344,10 +406,10 @@ const HomePage = () => {
             <div className={`content ${isContentVisible ? 'fade-up' : ''}`} />
             <Toast message={toast} onClose={() => setToast('')} />
 
-            {/* Navigation toggle */}
+            {/* Mobile Navigation toggle */}
             <button
               ref={toggleRef}
-              className="nav-toggle"
+              className="nav-toggle mobile-only"
               onClick={() => setIsNavOpen((v) => !v)}
               aria-label={isNavOpen ? 'Close sidebar navigation' : 'Open sidebar navigation'}
               aria-expanded={isNavOpen}
@@ -355,15 +417,29 @@ const HomePage = () => {
               {isNavOpen ? '✖' : '☰'}
             </button>
 
-            {/* Sidebar Navigation */}
-            <nav ref={sidebarRef} className={`sidebar ${isNavOpen ? 'open' : ''}`} role="navigation" aria-label="Main navigation">
+            {/* App Bar Navigation for Desktop */}
+            <nav className={`app-bar desktop-only ${isAppBarHidden ? 'hidden' : ''}`} role="navigation" aria-label="Main navigation">
+              <div className="app-bar-content">
+                <a href="#header" className="nav-link">About</a>
+                <a href="#education" className="nav-link">Education</a>
+                <a href="#experience" className="nav-link">Experience</a>
+                <a href="#roadmap" className="nav-link">Roadmap</a>
+                <a href="#projects" className="nav-link">Projects</a>
+                <a href="#skills" className="nav-link">Skills</a>
+                <a href="#certifications" className="nav-link">Certifications</a>
+              </div>
+            </nav>
+
+            {/* Sidebar Navigation for Mobile */}
+            <nav ref={sidebarRef} className={`sidebar mobile-only ${isNavOpen ? 'open' : ''}`} role="navigation" aria-label="Main navigation">
               <ul className="nav-links">
-                <li><a href="#header" className="nav-link">About</a></li>
-                <li><a href="#education" className="nav-link">Education</a></li>
-                <li><a href="#experience" className="nav-link">Experience</a></li>
-                <li><a href="#projects" className="nav-link">Projects</a></li>
-                <li><a href="#skills" className="nav-link">Skills</a></li>
-                <li><a href="#certifications" className="nav-link">Licenses & Certifications</a></li>
+                <li><a href="#header" className="nav-link" onClick={() => setIsNavOpen(false)}>About</a></li>
+                <li><a href="#education" className="nav-link" onClick={() => setIsNavOpen(false)}>Education</a></li>
+                <li><a href="#experience" className="nav-link" onClick={() => setIsNavOpen(false)}>Experience</a></li>
+                <li><a href="#roadmap" className="nav-link" onClick={() => setIsNavOpen(false)}>Roadmap</a></li>
+                <li><a href="#projects" className="nav-link" onClick={() => setIsNavOpen(false)}>Projects</a></li>
+                <li><a href="#skills" className="nav-link" onClick={() => setIsNavOpen(false)}>Skills</a></li>
+                <li><a href="#certifications" className="nav-link" onClick={() => setIsNavOpen(false)}>Certifications</a></li>
               </ul>
             </nav>
 
@@ -399,25 +475,61 @@ const HomePage = () => {
                 <h2 id="experience-heading"><FaBriefcase size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Experience</h2>
                 <div className="experience-cards">
                   <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
-                    <span className="exp-chip" itemProp="hiringOrganization">AL NAHDA Training Institute with Unity</span>
+                    <span className="exp-chip" itemProp="hiringOrganization">AL NAHDA Training Institute (London Academy)</span>
                     <span className="exp-role" itemProp="jobTitle">Game Developer</span>
-                    <time className="exp-date" itemProp="datePublished">2025 - present</time>
+                    <time className="exp-date" itemProp="datePublished">2025 – Present</time>
+                    <ul className="exp-details">
+                      <li>Building 2D & 3D games in Unity Engine with C#</li>
+                      <li>Collaborating with trainers on real-world game projects</li>
+                    </ul>
+                  </article>
+                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                    <span className="exp-chip" itemProp="hiringOrganization">Oman Archive</span>
+                    <span className="exp-role" itemProp="jobTitle">Team Lead – Full-Stack Developer</span>
+                    <time className="exp-date" itemProp="datePublished">2025 – Present</time>
+                    <ul className="exp-details">
+                      <li>Led a team to develop a full-stack application</li>
+                      <li>Managed backend (SupaBase) and frontend (React + Vite) workstreams</li>
+                    </ul>
                   </article>
                   <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Rihal</span>
                     <span className="exp-role" itemProp="jobTitle">Software Engineer Intern</span>
-                    <time className="exp-date" itemProp="datePublished">2025 - 2025 (2 Months)</time>
+                    <time className="exp-date" itemProp="datePublished">2025 - 3 months</time>
+                    <ul className="exp-details">
+                      <li>Part of the "Spark to Code" internship program</li>
+                      <li>Worked on modern software development projects</li>
+                    </ul>
                   </article>
                   <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
-                    <span className="exp-chip" itemProp="hiringOrganization">Oman Archive</span>
-                    <span className="exp-role" itemProp="jobTitle">Full-Stack developer Intern</span>
-                    <time className="exp-date" itemProp="datePublished">2025 - 2025 (3 Months)</time>
+                    <span className="exp-chip" itemProp="hiringOrganization">Beulah Startup, Injaz Oman</span>
+                    <span className="exp-role" itemProp="jobTitle">R&D Manager (Part-time)</span>
+                    <time className="exp-date" itemProp="datePublished">2024–2025</time>
+                    <ul className="exp-details">
+                      <li>Developed sports facility booking platform with Flutter & AI/ML integration</li>
+                    </ul>
                   </article>
-                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
-                    <span className="exp-chip" itemProp="hiringOrganization">Buslah</span>
-                    <span className="exp-role" itemProp="jobTitle">Manager of Research and Development, Part-time</span>
-                    <time className="exp-date" itemProp="datePublished">2024 - 2025 (1 year)</time>
-                  </article>
+                </div>
+              </section>
+
+              {/* Roadmap Section */}
+              <section id="roadmap" aria-labelledby="roadmap-heading">
+                <h2 id="roadmap-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Learning Roadmap</h2>
+                <div className="roadmap-timeline">
+                  {roadmap.map((milestone, index) => (
+                    <div key={index} className="roadmap-item" style={{ ['--delay']: `${index * 0.2}s` }}>
+                      <div className="roadmap-year">{milestone.year}</div>
+                      <div className="roadmap-content">
+                        <h3 className="roadmap-title">{milestone.title}</h3>
+                        <p className="roadmap-description">{milestone.description}</p>
+                        <div className="roadmap-technologies">
+                          {milestone.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="roadmap-tech-tag">{tech}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
 
