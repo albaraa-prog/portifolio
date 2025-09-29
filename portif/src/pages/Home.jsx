@@ -101,15 +101,8 @@ function SEOHead() {
 const HomePage = () => {
   // UI state
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [preloaderHide, setPreloaderHide] = useState(false);
-  const [isContentVisible, setIsContentVisible] = useState(false);
   const [toast, setToast] = useState('');
-  const [typedText, setTypedText] = useState('');
   const [isAppBarHidden, setIsAppBarHidden] = useState(false);
-
-  const introText = '';
-  const typingDelay = 80;
 
   // refs
   const sidebarRef = useRef(null);
@@ -193,8 +186,8 @@ const HomePage = () => {
     {
       year: '2021',
       title: 'Foundation Year',
-      technologies: ['Java', 'Python', 'MySQL'],
-      description: 'Started my programming journey with core languages and database fundamentals'
+      technologies: ['Java', 'Python', 'MySQL', 'Blender'],
+      description: 'Started my programming journey with core languages, database fundamentals, and 3D modeling'
     },
     {
       year: '2022',
@@ -205,20 +198,20 @@ const HomePage = () => {
     {
       year: '2023',
       title: 'Cross-Platform & Modern Stack',
-      technologies: ['Flutter', 'MongoDB', 'Supabase'],
-      description: 'Mastered cross-platform development and modern database solutions'
+      technologies: ['Flutter', 'Dart', 'MongoDB', 'Supabase', '.NET', 'C#'],
+      description: 'Mastered cross-platform development, modern database solutions, and Microsoft technologies'
     },
     {
       year: '2024',
       title: 'Web & AI/ML',
-      technologies: ['React', 'Machine Learning'],
-      description: 'Explored modern web development and artificial intelligence'
+      technologies: ['React', 'Machine Learning', 'Django'],
+      description: 'Explored modern web development, artificial intelligence, and Python web frameworks'
     },
     {
       year: '2025',
-      title: 'Backend Mastery',
-      technologies: ['Spring Boot', 'Flask'],
-      description: 'Advanced backend development with enterprise frameworks'
+      title: 'Backend Mastery & Game Development',
+      technologies: ['Spring Boot', 'Flask', 'Unity', 'JavaScript', 'TypeScript'],
+      description: 'Advanced backend development with enterprise frameworks, game development, and modern web technologies'
     }
   ];
 
@@ -298,34 +291,6 @@ const HomePage = () => {
     }
   };
 
-  // Typewriter effect
-  useEffect(() => {
-    setTypedText('');
-    let idx = 0;
-    let timeout;
-    function type() {
-      setTypedText(introText.slice(0, idx));
-      if (idx < introText.length) {
-        idx++;
-        timeout = setTimeout(type, typingDelay);
-      }
-    }
-    type();
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // Preloader hide
-  useEffect(() => {
-    const totalTime = introText.length * typingDelay + 400;
-    const timer = setTimeout(() => {
-      setPreloaderHide(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        setIsContentVisible(true);
-      }, 600);
-    }, totalTime);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Close nav on outside click
   useEffect(() => {
@@ -395,16 +360,7 @@ const HomePage = () => {
       </div>
 
       <div className="home-page dark">
-        {isLoading && (
-          <div className={`preloader${preloaderHide ? ' preloader--hide' : ''}`}>
-            <h1 className="preloader-text animated-intro">{typedText}<span className="type-cursor">|</span></h1>
-          </div>
-        )}
-
-        {!isLoading && (
-          <>
-            <div className={`content ${isContentVisible ? 'fade-up' : ''}`} />
-            <Toast message={toast} onClose={() => setToast('')} />
+        <Toast message={toast} onClose={() => setToast('')} />
 
             {/* Mobile Navigation toggle */}
             <button
@@ -512,27 +468,6 @@ const HomePage = () => {
                 </div>
               </section>
 
-              {/* Roadmap Section */}
-              <section id="roadmap" aria-labelledby="roadmap-heading">
-                <h2 id="roadmap-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Learning Roadmap</h2>
-                <div className="roadmap-timeline">
-                  {roadmap.map((milestone, index) => (
-                    <div key={index} className="roadmap-item" style={{ ['--delay']: `${index * 0.2}s` }}>
-                      <div className="roadmap-year">{milestone.year}</div>
-                      <div className="roadmap-content">
-                        <h3 className="roadmap-title">{milestone.title}</h3>
-                        <p className="roadmap-description">{milestone.description}</p>
-                        <div className="roadmap-technologies">
-                          {milestone.technologies.map((tech, techIndex) => (
-                            <span key={techIndex} className="roadmap-tech-tag">{tech}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
               {/* Projects Section */}
               <section id="projects" aria-labelledby="projects-heading">
                 <h2 id="projects-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Projects</h2>
@@ -561,6 +496,27 @@ const HomePage = () => {
                         <p className="project-link muted">Coming soon</p>
                       )}
                     </article>
+                  ))}
+                </div>
+              </section>
+
+              {/* Roadmap Section */}
+              <section id="roadmap" aria-labelledby="roadmap-heading">
+                <h2 id="roadmap-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Learning Roadmap</h2>
+                <div className="roadmap-timeline">
+                  {roadmap.map((milestone, index) => (
+                    <div key={index} className="roadmap-item" style={{ ['--delay']: `${index * 0.2}s` }}>
+                      <div className="roadmap-year">{milestone.year}</div>
+                      <div className="roadmap-content">
+                        <h3 className="roadmap-title">{milestone.title}</h3>
+                        <p className="roadmap-description">{milestone.description}</p>
+                        <div className="roadmap-technologies">
+                          {milestone.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="roadmap-tech-tag">{tech}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -599,9 +555,6 @@ const HomePage = () => {
 
             {/* Sidebar overlay when nav open */}
             {isNavOpen && <div className="sidebar-overlay" onClick={() => setIsNavOpen(false)} aria-hidden="true"></div>}
-
-          </>
-        )}
 
       </div>
     </>
