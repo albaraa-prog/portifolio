@@ -43,7 +43,7 @@ body {
 /* Container Styles */
 .container {
   padding: 2rem;
-  padding-top: 100px; /* Account for app bar height */
+  padding-top: 150px !important; /* More space between app bar and about card */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -67,7 +67,7 @@ body {
   }
   
   .container {
-    padding-top: 20px; /* Reset padding for mobile */
+    padding-top: 40px !important; /* More space for mobile */
   }
   
   .app-bar {
@@ -90,7 +90,7 @@ body {
 
 @media (max-width: 1024px) {
   .app-bar-content {
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .app-bar .nav-link {
@@ -126,7 +126,7 @@ body {
 
 .app-bar-content {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
   max-width: 1200px;
   width: 100%;
@@ -139,13 +139,17 @@ body {
   font-size: 1rem;
   padding: 0.8rem 1.8rem;
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
   position: relative;
   overflow: hidden;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 .app-bar .nav-link::before {
@@ -160,10 +164,13 @@ body {
 }
 
 .app-bar .nav-link:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 .app-bar .nav-link:hover::before {
@@ -356,12 +363,16 @@ section h2,
 /* Header Styles */
 .header {
   padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin-bottom: 3rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -374,7 +385,8 @@ section h2,
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 20px;
   z-index: -1;
 }
 
@@ -451,12 +463,16 @@ section h2,
 /* Section Styles */
 section {
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin-bottom: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -468,7 +484,7 @@ section::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
   z-index: -1;
 }
 
@@ -508,16 +524,17 @@ section p {
   margin: 0 auto;
 }
 
-/* Project Card Base Styles - Liquid Glass Effect */
+/* Project Card Base Styles - Apple iOS 17 Glass Effect */
 .project-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2);
   padding: 2rem;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
@@ -542,27 +559,9 @@ section p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   border-radius: 20px;
   z-index: -1;
-  transition: all 0.4s ease;
-}
-
-.project-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: all 0.6s ease;
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* Card Content Layout */
@@ -594,37 +593,22 @@ section p {
   flex-grow: 1;
 }
 
-/* Liquid Glass Hover Effects */
+/* Apple Glass Hover Effects */
 @media (hover: hover) {
   .project-card:hover {
-    transform: translateY(-15px) scale(1.03) rotateX(5deg);
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 
-      0 40px 80px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-  }
-  
-  .project-card:hover::before {
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.15) 0%, 
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.05) 100%);
-  }
-  
-  .project-card:hover::after {
-    opacity: 1;
-    transform: scale(1.1);
+      0 30px 60px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.3);
   }
 }
 
-/* Liquid Glass Interactive Effect */
+/* Header-style Interactive Effect */
 .project-card:active {
-  transform: translateY(-10px) scale(1.01);
-  backdrop-filter: blur(30px) saturate(250%);
-  -webkit-backdrop-filter: blur(30px) saturate(250%);
+  transform: translateY(-5px) scale(1.01);
 }
 
 /* Card Animation - Fixed */
@@ -644,10 +628,13 @@ section p {
   animation: cardFloat 6s ease-in-out infinite;
 }
 
-/* Dark Mode Adjustments */
+/* Dark Mode Adjustments - using app bar glassy effect */
 .dark .project-card {
-  background-color: #1a1d21;
-  border-color: #2d2d2d;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .dark .project-title {
@@ -889,11 +876,7 @@ body {
   padding: 1rem; /* Reduced from 2rem for better mobile spacing */
 }
 
-.container {
-  padding: 2rem; /* Reduced from 60px */
-  max-width: 1200px; /* Added for better content containment */
-  margin: 0 auto; /* Center content */
-}
+/* Removed duplicate container styles - using main container definition */
 
 /* Improved Sidebar Responsiveness */
 .sidebar {
@@ -909,30 +892,7 @@ body {
   }
 }
 
-/* Improved Project Card Styling */
-.project-card {
-  background: #ffffff;
-  border: 3px solid #000;
-  border-radius: 16px;
-  box-shadow: 6px 6px 0 #000;
-  padding: 1.5rem;
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  margin: 0 auto;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.project-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 10px 10px 0 #000;
-}
+/* Removed duplicate project card styles - using header-style glass morphism */
 
 /* Responsive Grid - removed duplicate */
 
@@ -982,11 +942,13 @@ body {
   outline-offset: 2px;
 }
 
-/* Dark Mode */
+/* Dark Mode - using app bar glassy effect */
 .dark .project-card {
-  background: #1a1d21;
-  border-color: #2d2d2d;
-  box-shadow: 6px 6px 0 #000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .dark .project-title {
@@ -998,9 +960,9 @@ body {
 }
 
 .dark .tech-tag {
-  background: #2d2d2d;
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
-  border-color: #444;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Mobile Optimizations */
@@ -1041,6 +1003,7 @@ section h2 {
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
+    padding-top: 40px !important;
   }
 
   .header {
@@ -1206,14 +1169,15 @@ img {
 
 .exp-card,
 .cert-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2);
   padding: 2rem;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
@@ -1238,7 +1202,8 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 20px;
   z-index: -1;
 }
 
@@ -1248,33 +1213,28 @@ img {
   outline-offset: 2px;
 }
 
-/* Experience and Certification Card Liquid Glass Hover Effects */
+/* Experience and Certification Card Apple Glass Hover Effects */
 @media (hover: hover) {
   .exp-card:hover,
   .cert-card:hover {
-    transform: translateY(-12px) scale(1.02) rotateX(3deg);
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 
-      0 35px 70px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-  }
-  
-  .exp-card:hover::before,
-  .cert-card:hover::before {
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.15) 0%, 
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.05) 100%);
+      0 30px 60px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.3);
   }
 }
 
-/* Dark mode for cards */
+/* Dark mode for cards - using app bar glassy effect */
 .dark .exp-card,
 .dark .cert-card {
-  background-color: #1a1d21;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   color: #f3f4f6;
 }
 
@@ -1389,12 +1349,16 @@ img {
 }
 
 .roadmap-content {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
 }
 
@@ -1405,8 +1369,8 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 20px;
   z-index: -1;
 }
 
@@ -1443,17 +1407,16 @@ img {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Roadmap Hover Effects */
+/* Roadmap Apple Glass Hover Effects */
 @media (hover: hover) {
   .roadmap-content:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .roadmap-content:hover::before {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.3);
   }
   
   .roadmap-tech-tag:hover {
