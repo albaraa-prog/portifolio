@@ -6,8 +6,10 @@ import {
   FaCode,
   FaExternalLinkAlt,
   FaStar,
+  FaDownload,
 } from 'react-icons/fa';
 import photo from '../assets/photo.png';
+import cvPdf from '../assets/Al Baraa_Al Harthi_CV.pdf';
 import './Style.css';
 
 // Toast component
@@ -402,7 +404,7 @@ const HomePage = () => {
             {/* Main content */}
             <main className="container" role="main">
               {/* Header */}
-              <header id="header" className="header" itemScope itemType="https://schema.org/Person">
+              <header id="header" className="header liquid" itemScope itemType="https://schema.org/Person">
                 <img src={photo} alt="Al Baraa Mohammed Al Harthi - Professional headshot" className="profile-photo" itemProp="image" />
                 <h1 itemProp="name">{personalInfo.name}</h1>
                 <p itemProp="jobTitle">{personalInfo.title}</p>
@@ -411,12 +413,16 @@ const HomePage = () => {
                   <a href={personalInfo.contact.github} target="_blank" rel="noopener noreferrer" className="link" aria-label="GitHub Profile">GitHub</a>
                   <a href={personalInfo.contact.instagram} target="_blank" rel="noopener noreferrer" className="link" aria-label="Instagram Profile">Instagram</a>
                   <a href="#" className="link" onClick={(e) => { e.preventDefault(); handleEmailCopy(); }} aria-label="Copy email address to clipboard">{personalInfo.contact.email}</a>
+                  <a href={cvPdf} download="Al Baraa_Al Harthi_CV.pdf" className="link cv-download" aria-label="Download CV">
+                    <FaDownload size={16} style={{ marginRight: '0.5rem' }} />
+                    Download CV
+                  </a>
                 </nav>
                 <p className="location" itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Muscat</span>, <span itemProp="addressCountry">Oman</span></p>
               </header>
 
               {/* Education Section */}
-              <section id="education" aria-labelledby="education-heading">
+              <section id="education" className="liquid" aria-labelledby="education-heading">
                 <h2 id="education-heading"><FaBookOpen size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Education</h2>
                 <div itemScope itemType="https://schema.org/EducationalOrganization">
                   <h3 itemProp="name">{education.degree}</h3>
@@ -427,10 +433,10 @@ const HomePage = () => {
               </section>
 
               {/* Experience Section */}
-              <section id="experience" aria-labelledby="experience-heading">
+              <section id="experience" className="liquid" aria-labelledby="experience-heading">
                 <h2 id="experience-heading"><FaBriefcase size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Experience</h2>
                 <div className="experience-cards">
-                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                  <article className="exp-card liquid" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">AL NAHDA Training Institute (London Academy)</span>
                     <span className="exp-role" itemProp="jobTitle">Game Developer</span>
                     <time className="exp-date" itemProp="datePublished">2025 – Present</time>
@@ -439,7 +445,7 @@ const HomePage = () => {
                       <li>Collaborating with trainers on real-world game projects</li>
                     </ul>
                   </article>
-                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                  <article className="exp-card liquid" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Oman Archive</span>
                     <span className="exp-role" itemProp="jobTitle">Team Lead – Full-Stack Developer</span>
                     <time className="exp-date" itemProp="datePublished">2025 – Present</time>
@@ -448,7 +454,7 @@ const HomePage = () => {
                       <li>Managed backend (SupaBase) and frontend (React + Vite) workstreams</li>
                     </ul>
                   </article>
-                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                  <article className="exp-card liquid" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Rihal</span>
                     <span className="exp-role" itemProp="jobTitle">Software Engineer Intern</span>
                     <time className="exp-date" itemProp="datePublished">2025 - 3 months</time>
@@ -457,7 +463,7 @@ const HomePage = () => {
                       <li>Worked on modern software development projects</li>
                     </ul>
                   </article>
-                  <article className="exp-card" itemScope itemType="https://schema.org/WorkExperience">
+                  <article className="exp-card liquid" itemScope itemType="https://schema.org/WorkExperience">
                     <span className="exp-chip" itemProp="hiringOrganization">Beulah Startup, Injaz Oman</span>
                     <span className="exp-role" itemProp="jobTitle">R&D Manager (Part-time)</span>
                     <time className="exp-date" itemProp="datePublished">2024–2025</time>
@@ -469,13 +475,13 @@ const HomePage = () => {
               </section>
 
               {/* Projects Section */}
-              <section id="projects" aria-labelledby="projects-heading">
+              <section id="projects" className="liquid" aria-labelledby="projects-heading">
                 <h2 id="projects-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Projects</h2>
                 <div className="projects-grid">
                   {projects.map((project, index) => (
                     <article
                       key={index}
-                      className="project-card"
+                      className="project-card liquid"
                       tabIndex={0}
                       style={{ ['--delay']: `${index * 0.2}s`, cursor: project.url ? 'pointer' : 'default' }}
                       itemScope
@@ -501,13 +507,13 @@ const HomePage = () => {
               </section>
 
               {/* Roadmap Section */}
-              <section id="roadmap" aria-labelledby="roadmap-heading">
+              <section id="roadmap" className="liquid" aria-labelledby="roadmap-heading">
                 <h2 id="roadmap-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Learning Roadmap</h2>
                 <div className="roadmap-timeline">
                   {roadmap.map((milestone, index) => (
                     <div key={index} className="roadmap-item" style={{ ['--delay']: `${index * 0.2}s` }}>
                       <div className="roadmap-year">{milestone.year}</div>
-                      <div className="roadmap-content">
+                      <div className="roadmap-content liquid">
                         <h3 className="roadmap-title">{milestone.title}</h3>
                         <p className="roadmap-description">{milestone.description}</p>
                         <div className="roadmap-technologies">
@@ -522,7 +528,7 @@ const HomePage = () => {
               </section>
 
               {/* Skills Section */}
-              <section id="skills" aria-labelledby="skills-heading">
+              <section id="skills" className="liquid" aria-labelledby="skills-heading">
                 <h2 id="skills-heading"><FaStar size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Skills</h2>
                 <div itemScope itemType="https://schema.org/Person">
                   <h3>Programming Languages</h3>
@@ -537,11 +543,11 @@ const HomePage = () => {
               </section>
 
               {/* Certifications Section */}
-              <section id="certifications" aria-labelledby="certifications-heading">
+              <section id="certifications" className="liquid" aria-labelledby="certifications-heading">
                 <h2 id="certifications-heading"><FaCertificate size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Licenses & Certifications</h2>
                 <div className="cert-cards">
                   {certifications.map((c, i) => (
-                    <article key={i} className="cert-card" itemScope itemType="https://schema.org/EducationalOccupationalCredential">
+                    <article key={i} className="cert-card liquid" itemScope itemType="https://schema.org/EducationalOccupationalCredential">
                       <span className="cert-chip" itemProp="recognizedBy">{c.recognizedBy}</span>
                       <span className="cert-title" itemProp="name">{c.name}</span>
                       {c.date && <time className="cert-date" itemProp="datePublished">{c.date}</time>}

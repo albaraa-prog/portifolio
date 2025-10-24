@@ -266,6 +266,112 @@ body {
   left: 100%;
 }
 
+/* Liquid Class - Enhanced Glass Morphism Effect */
+.liquid {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.05) 50%, 
+    rgba(0, 0, 0, 0.02) 100%);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.liquid::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    transparent 70%);
+  animation: liquidShimmer 8s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes liquidShimmer {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+/* Enhanced hover effects for liquid cards */
+@media (hover: hover) {
+  .liquid:hover {
+    transform: translateY(-12px) scale(1.03) !important;
+    background: rgba(0, 0, 0, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 
+      0 40px 80px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 30px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .liquid:hover::after {
+    animation-duration: 4s;
+    opacity: 0.6;
+  }
+}
+
+/* CV Download Button Styling */
+.cv-download {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.cv-download:hover {
+  transform: translateY(-4px) scale(1.05) !important;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4) !important;
+}
+
+.cv-download:hover::before {
+  left: 100%;
+}
+
 /* Dark Mode Styles */
 .dark .app-bar {
   background: rgba(255, 255, 255, 0.1);
@@ -378,6 +484,19 @@ section h2,
   overflow: hidden;
 }
 
+/* Override header styles when liquid class is applied */
+.header.liquid {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.2) !important;
+}
+
 .header::before {
   content: '';
   position: absolute;
@@ -475,6 +594,19 @@ section {
     0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
+}
+
+/* Override section styles when liquid class is applied */
+section.liquid {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 section::before {
