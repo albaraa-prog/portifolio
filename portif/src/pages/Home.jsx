@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   FaBookOpen,
   FaBriefcase,
@@ -32,7 +32,7 @@ function Toast({ message, onClose }) {
 
 function SEOHead() {
   useEffect(() => {
-    document.title = 'Al Baraa Mohammed Al Harthi - Software Engineer | AI/ML';
+    document.title = 'Al Baraa Mohammed Al Harthi - Software Engineer | B.Sc. | AI/ML';
 
     const pageUrl = window.location.href.split('#')[0];
     const imageUrl = new URL(photo, window.location.origin).href;
@@ -41,18 +41,18 @@ function SEOHead() {
       {
         name: 'description',
         content:
-          'Al Baraa Mohammed Al Harthi is a Software Engineer, Computer Science student, and AI/ML practitioner based in Muscat, Oman with experience across React, Flutter, Spring Boot, and applied machine learning.',
+          'Al Baraa Mohammed Al Harthi is a Software Engineer with a B.Sc. in Computer Science and an AI/ML practitioner based in Muscat, Oman with experience across React, Flutter, Spring Boot, and applied machine learning.',
       },
       {
         name: 'keywords',
         content:
-          'Al Baraa Mohammed Al Harthi, Software Engineer, AI ML, Computer Science Student, React Developer, Flutter Developer, Spring Boot, Muscat Oman, Middle East College, Digital Dimension',
+          'Al Baraa Mohammed Al Harthi, Software Engineer, AI ML, B.Sc. Computer Science, React Developer, Flutter Developer, Spring Boot, Muscat Oman, Middle East College, Digital Dimension',
       },
       { name: 'author', content: 'Al Baraa Mohammed Al Harthi' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       { name: 'robots', content: 'index, follow' },
       { name: 'language', content: 'en' },
-      { property: 'og:title', content: 'Al Baraa Mohammed Al Harthi - Software Engineer | AI/ML' },
+      { property: 'og:title', content: 'Al Baraa Mohammed Al Harthi - Software Engineer | B.Sc. | AI/ML' },
       {
         property: 'og:description',
         content:
@@ -67,7 +67,7 @@ function SEOHead() {
       {
         name: 'twitter:description',
         content:
-          'Software Engineer, Computer Science student, and AI/ML builder focused on full-stack and mobile products.',
+          'Software Engineer with a B.Sc. in Computer Science and AI/ML builder focused on full-stack and mobile products.',
       },
       { name: 'twitter:image', content: imageUrl },
     ];
@@ -102,7 +102,7 @@ function SEOHead() {
       name: 'Al Baraa Mohammed Al Harthi',
       jobTitle: 'Software Engineer',
       description:
-        'Software Engineer, Computer Science student, and AI/ML practitioner with experience in React, Flutter, Spring Boot, and machine learning.',
+        'Software Engineer with a B.Sc. in Computer Science and AI/ML practitioner with experience in React, Flutter, Spring Boot, and machine learning.',
       url: pageUrl,
       image: imageUrl,
       email: 'albraa9021@gmail.com',
@@ -151,9 +151,9 @@ const HomePage = () => {
 
   const personalInfo = {
     name: 'Al Baraa Mohammed Al Harthi',
-    title: 'Software Engineer | Computer Science Student | AI/ML',
+    title: 'Software Engineer | B.Sc. | AI/ML',
     summary:
-      'Building full-stack, mobile, and AI-powered products with a focus on practical delivery, clean user experiences, and research-backed engineering.',
+      'Software Engineer with a B.Sc. in Computer Science, building full-stack, mobile, and AI-powered products with a focus on practical delivery, clean user experiences, and research-backed engineering.',
     location: 'Muscat, 122, Oman',
     languages: ['Arabic', 'English'],
     contact: {
@@ -293,6 +293,7 @@ const HomePage = () => {
         'Visual Studio Code',
         'Anaconda',
         'Cursor',
+        'Unreal Engine',
         'Unity',
       ],
     },
