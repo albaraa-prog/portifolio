@@ -32,7 +32,7 @@ function Toast({ message, onClose }) {
 
 function SEOHead() {
   useEffect(() => {
-    document.title = 'Al Baraa Mohammed Al Harthi - Software Engineer | B.Sc. | AI/ML';
+    document.title = 'AL-BARAA MOHAMMED AL-HARTHI - Software Engineer | B.Sc. | AI/ML';
 
     const pageUrl = window.location.href.split('#')[0];
     const imageUrl = new URL(photo, window.location.origin).href;
@@ -41,33 +41,33 @@ function SEOHead() {
       {
         name: 'description',
         content:
-          'Al Baraa Mohammed Al Harthi is a Software Engineer with a B.Sc. in Computer Science and an AI/ML practitioner based in Muscat, Oman with experience across React, Flutter, Spring Boot, and applied machine learning.',
+          'AL-BARAA MOHAMMED AL-HARTHI is a Software Engineer with a B.Sc. in Computer Science (Coventry University) and AI/ML practitioner based in Muscat, Oman with expertise in React, Unity, Flutter, Spring Boot, PHP, and applied Deep Learning.',
       },
       {
         name: 'keywords',
         content:
-          'Al Baraa Mohammed Al Harthi, Software Engineer, AI ML, B.Sc. Computer Science, React Developer, Flutter Developer, Spring Boot, Muscat Oman, Middle East College, Digital Dimension',
+          'AL-BARAA MOHAMMED AL-HARTHI, Software Engineer, AI ML, B.Sc. Computer Science, React Developer, Flutter Developer, Spring Boot, Unity, Muscat Oman, Middle East College, Digital Dimension',
       },
-      { name: 'author', content: 'Al Baraa Mohammed Al Harthi' },
+      { name: 'author', content: 'AL-BARAA MOHAMMED AL-HARTHI' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       { name: 'robots', content: 'index, follow' },
       { name: 'language', content: 'en' },
-      { property: 'og:title', content: 'Al Baraa Mohammed Al Harthi - Software Engineer | B.Sc. | AI/ML' },
+      { property: 'og:title', content: 'AL-BARAA MOHAMMED AL-HARTHI - Software Engineer | B.Sc. | AI/ML' },
       {
         property: 'og:description',
         content:
-          'Portfolio of Al Baraa Mohammed Al Harthi featuring full-stack software engineering, mobile development, and AI/ML projects.',
+          'Portfolio of AL-BARAA MOHAMMED AL-HARTHI featuring full-stack software engineering, high-scale cross-platform applications, mobile development, and AI/ML research.',
       },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: pageUrl },
-      { property: 'og:site_name', content: 'Al Baraa Al Harthi Portfolio' },
+      { property: 'og:site_name', content: 'AL-BARAA MOHAMMED AL-HARTHI Portfolio' },
       { property: 'og:image', content: imageUrl },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Al Baraa Mohammed Al Harthi' },
+      { name: 'twitter:title', content: 'AL-BARAA MOHAMMED AL-HARTHI' },
       {
         name: 'twitter:description',
         content:
-          'Software Engineer with a B.Sc. in Computer Science and AI/ML builder focused on full-stack and mobile products.',
+          'Software Engineer with a B.Sc. in Computer Science and AI/ML practitioner focused on scalable software products and applied machine learning.',
       },
       { name: 'twitter:image', content: imageUrl },
     ];
@@ -99,14 +99,14 @@ function SEOHead() {
     const structuredData = {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      name: 'Al Baraa Mohammed Al Harthi',
+      name: 'AL-BARAA MOHAMMED AL-HARTHI',
       jobTitle: 'Software Engineer',
       description:
-        'Software Engineer with a B.Sc. in Computer Science and AI/ML practitioner with experience in React, Flutter, Spring Boot, and machine learning.',
+        'Software Engineer with a B.Sc. in Computer Science and AI/ML practitioner experienced in React, Unity, Flutter, Spring Boot, PHP, and Deep Learning.',
       url: pageUrl,
       image: imageUrl,
       email: 'albraa9021@gmail.com',
-      telephone: '+96891262544',
+      telephone: '+968 91262544',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Muscat',
@@ -115,7 +115,7 @@ function SEOHead() {
       },
       alumniOf: {
         '@type': 'EducationalOrganization',
-        name: 'Middle East College',
+        name: 'Middle East College, Muscat',
       },
       worksFor: {
         '@type': 'Organization',
@@ -150,10 +150,10 @@ const HomePage = () => {
   const toggleRef = useRef(null);
 
   const personalInfo = {
-    name: 'Al Baraa Mohammed Al Harthi',
+    name: 'AL-BARAA MOHAMMED AL-HARTHI',
     title: 'Software Engineer | B.Sc. | AI/ML',
     summary:
-      'Software Engineer with a B.Sc. in Computer Science, building full-stack, mobile, and AI-powered products with a focus on practical delivery, clean user experiences, and research-backed engineering.',
+      'Software Engineer with a B.Sc. (Hons) in Computer Science, specializing in high-concurrency cross-platform applications, full-stack ecosystems, multimedia streaming platforms, and applied AI/ML deep learning frameworks.',
     location: 'Muscat, 122, Oman',
     languages: ['Arabic', 'English'],
     contact: {
@@ -169,7 +169,7 @@ const HomePage = () => {
     institution: 'Middle East College, Muscat',
     degree: 'Bachelor of Science (Hons) in Computer Science Software Technology',
     university: 'Coventry University',
-    period: '2021 - 2026',
+    period: '2021 – 2026',
     gpa: '3.5',
     activity: 'Google Developers Group: Technical Lead',
   };
@@ -178,87 +178,116 @@ const HomePage = () => {
     {
       organization: 'Digital Dimension',
       role: 'Software Development Manager',
-      period: '2026 - Present',
+      period: '2026 – Present',
       bullets: [
-        'Leading software delivery and coordinating engineering execution across active product work.',
-        'Supporting planning, architecture discussions, and implementation quality for production-ready applications.',
+        'Leading software development operations and managing engineering execution across active projects.',
+        'Directing team workflows, architecture standards, and production release delivery.',
       ],
     },
     {
       organization: 'Omani Archive',
-      role: 'Full-Stack Developer Team Lead',
-      period: 'July 2025 - January 2026 · 5 months',
+      role: 'Full-stack Developer Team Lead',
+      period: '2025 – 2026',
       bullets: [
-        'Led full-stack delivery across React + Vite frontend work and backend service coordination.',
-        'Managed team collaboration, implementation flow, and feature execution from planning to delivery.',
+        'Spearheaded full-stack engineering teams in delivering archive platform features and user services.',
+        'Managed frontend and backend service integration, architecture flow, and feature delivery.',
       ],
     },
     {
       organization: 'AL NAHDA Training Institute',
       role: 'Game Developer',
-      period: 'August 2025 - January 2026 · 6 months',
+      period: '2025 – 2026',
       bullets: [
-        'Built gameplay features and interactive experiences using Unity and C#.',
-        'Worked on hands-on game development tasks aligned with practical training projects.',
+        'Designed and engineered interactive gameplay features using Unity and C#.',
+        'Worked on hands-on game development modules aligned with practical training programs.',
       ],
     },
     {
       organization: 'Rihal',
-      role: 'Software Engineer Intern',
-      period: 'July 2025 - August 2025 · 2 months',
+      role: 'Software Engineer (Intern)',
+      period: '2025 – 2025',
       bullets: [
         'Contributed during the Spark to Code internship program in a professional engineering environment.',
-        'Strengthened delivery, collaboration, and modern software development workflow skills.',
+        'Strengthened software delivery, team collaboration, and modern development workflows.',
       ],
     },
     {
       organization: 'Omani Archive',
-      role: 'Full-Stack Developer Intern',
-      period: 'April 2025 - June 2025 · 3 months',
+      role: 'Full-Stack Developer (Intern)',
+      period: '2025 – 2025',
       bullets: [
-        'Supported application development across frontend and backend tasks before progressing into a team lead role.',
-        'Helped implement features and maintain momentum on a growing full-stack product.',
+        'Developed responsive web interfaces and backend API components for archival document management.',
+        'Supported platform implementation and feature maintenance before advancing to Team Lead.',
       ],
     },
     {
       organization: 'Freelancer',
-      role: 'Self-employed',
-      period: '2024 - Present',
+      role: 'Self-Employed',
+      period: '2024 – Present',
       bullets: [
-        'Delivering independent software work across web, mobile, and automation-focused solutions.',
-        'Exploring client-ready ideas that blend product design, implementation, and AI-assisted workflows.',
+        'Delivering independent software work across web, mobile, LMS, and AI-assisted workflows.',
+        'Executing client projects with a focus on usability, scalable backend integrations, and clean design.',
+      ],
+    },
+    {
+      organization: 'Injaz Oman',
+      role: 'Head of Research & Development',
+      period: '2024 – 2025',
+      bullets: [
+        'Spearheaded research and development strategy for cross-platform innovation products.',
+        'Led technical execution and product design throughout national competition entries.',
       ],
     },
   ];
 
   const projects = [
     {
-      name: 'Appointment Booking System',
-      technologies: ['Java', 'Spring Boot', 'React', 'MySQL'],
+      name: 'High-Scale Cross-Platform Application (Maintenance & Operations)',
+      category: 'Professional Project',
+      technologies: ['Unity', 'C#', 'Flutter', 'React', 'Firebase', 'Google Play & App Store'],
       description:
-        'Collaborated on an appointment booking platform that allows users to schedule, manage, and track appointments efficiently.',
-      url: 'https://github.com/mozaalismaili/AppointmentScheduler',
+        'Managed the end-to-end maintenance and optimization of a high-concurrency production application serving over 100,000 users. Spearheaded infrastructure stability and feature deployment across mobile and web environments.',
+      url: '',
+    },
+    {
+      name: 'Multimedia Streaming Ecosystem',
+      category: 'Professional Project',
+      technologies: ['Flutter', 'Firebase', 'Google Play & App Store'],
+      description:
+        'Engineered a comprehensive multimedia streaming platform for a local media entity, ensuring low-latency delivery and cross-platform accessibility.',
+      url: '',
+    },
+    {
+      name: 'Islamic Education Learning Management System (LMS)',
+      category: 'Professional Project',
+      technologies: ['PHP', 'Yii2', 'Hostinger', 'Thawani Payment Gateway'],
+      description:
+        'Architected a scalable Udemy-style web application for course management, integrating secure third-party payment processing for subscription and content delivery.',
+      url: '',
+    },
+    {
+      name: 'Loyalty & Discount Platform',
+      category: 'Professional Project',
+      technologies: ['Flutter', 'Hostinger'],
+      description:
+        'Developed a location-aware point-collection mobile application, implementing automated logic for real-time voucher generation and redemption.',
+      url: '',
     },
     {
       name: 'Machine Learning Framework for Automated Lithology Recognition',
-      technologies: ['Python', 'TensorFlow', 'PyTorch', 'ResNet34', 'ResNet50'],
+      category: 'Research & Academic Project',
+      technologies: ['TensorFlow', 'PyTorch', 'ResNet34', 'ResNet50', 'Python'],
       description:
-        'Developed a machine learning framework for automated lithology recognition using deep CNN architectures for sustainable eco-engineering research.',
+        'Developed an automated classification framework for geological analysis using deep CNN architectures, focusing on sustainable eco-engineering applications.',
       url: '',
     },
     {
-      name: 'Cross-Platform Mobile Application for Sports Facility Bookings',
-      technologies: ['Dart', 'Flutter', 'MongoDB', 'Firebase', 'React', 'AI/ML'],
+      name: 'Appointment Booking System',
+      category: 'Research & Academic Project',
+      technologies: ['Java', 'Spring Boot', 'React', 'MySQL'],
       description:
-        'Built a sports facility booking app with booking flows, community interaction, chat, recommendations, and dashboard experiences.',
-      url: '',
-    },
-    {
-      name: 'Injaz Oman Competition 2023/2024',
-      technologies: ['Research & Development', 'Product Strategy', 'Cross-Platform App'],
-      description:
-        'Led the research and development team and helped drive the creation of a cross-platform application during the competition.',
-      url: '',
+        'Collaborative development of a robust scheduling ecosystem to streamline user appointment management.',
+      url: 'https://github.com/mozaalismaili/AppointmentScheduler',
     },
   ];
 
@@ -268,14 +297,14 @@ const HomePage = () => {
         'A Hierarchical Deep Learning Framework for Automated Rock and Stone Classification: Architecture, Deployment, and Evaluation',
       venue: 'ICADAAI 2026',
       description:
-        'Research publication focused on deep learning architecture, deployment strategy, and evaluation for automated geological material classification.',
+        'Peer-reviewed research publication presenting deep learning architecture, edge deployment strategy, and performance evaluation for automated geological material classification.',
     },
   ];
 
   const skillGroups = [
     {
       title: 'Programming Languages',
-      items: ['Java', 'Python', 'Visual Basic', 'Dart', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#'],
+      items: ['Java', 'Python', 'Visual Basic', 'Dart', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#', 'PHP'],
     },
     {
       title: 'Development Tools',
@@ -309,6 +338,11 @@ const HomePage = () => {
 
   const certifications = [
     {
+      recognizedBy: 'AL NAHDA Training Institute',
+      name: 'Video Games with Unity Engine',
+      date: 'February 2026',
+    },
+    {
       recognizedBy: 'freeCodeCamp',
       name: 'JavaScript Algorithms and Data Structures',
       date: 'September 2025',
@@ -327,11 +361,6 @@ const HomePage = () => {
       recognizedBy: 'LinkedIn',
       name: 'Start and Manage a Small Business',
       date: 'December 2024',
-    },
-    {
-      recognizedBy: 'LinkedIn',
-      name: 'Change Management Foundations',
-      date: 'November 2024',
     },
     {
       recognizedBy: 'Forage',
@@ -447,7 +476,7 @@ const HomePage = () => {
         left: Math.random() * 100,
         duration: 1.5 + Math.random() * 2,
       })),
-    [],
+    []
   );
 
   return (
@@ -508,7 +537,7 @@ const HomePage = () => {
 
         <main className="container" role="main">
           <header id="header" className="header liquid" itemScope itemType="https://schema.org/Person">
-            <img src={photo} alt="Al Baraa Mohammed Al Harthi professional headshot" className="profile-photo" itemProp="image" />
+            <img src={photo} alt="AL-BARAA MOHAMMED AL-HARTHI professional headshot" className="profile-photo" itemProp="image" />
             <h1 itemProp="name">{personalInfo.name}</h1>
             <p className="hero-title" itemProp="jobTitle">{personalInfo.title}</p>
             <p className="hero-summary">{personalInfo.summary}</p>
@@ -587,7 +616,7 @@ const HomePage = () => {
           </section>
 
           <section id="projects" className="liquid" aria-labelledby="projects-heading">
-            <h2 id="projects-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Projects & Participation</h2>
+            <h2 id="projects-heading"><FaCode size={48} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} aria-hidden="true" />Professional & Academic Projects</h2>
             <div className="projects-grid">
               {projects.map((project, index) => (
                 <article
@@ -604,6 +633,7 @@ const HomePage = () => {
                     }
                   }}
                 >
+                  <span className="exp-chip" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>{project.category}</span>
                   <h3 itemProp="name">{project.name}</h3>
                   <p itemProp="description">{project.description}</p>
                   <div className="tags-container" itemProp="programmingLanguage">
@@ -614,7 +644,7 @@ const HomePage = () => {
                   {project.url ? (
                     <p className="project-link"><FaExternalLinkAlt size={16} aria-hidden="true" /> View project</p>
                   ) : (
-                    <p className="project-link muted">Portfolio highlight</p>
+                    <p className="project-link muted">Featured Project</p>
                   )}
                 </article>
               ))}
@@ -677,4 +707,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
