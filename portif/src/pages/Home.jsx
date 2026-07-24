@@ -15,7 +15,7 @@ import {
 import './Style.css';
 
 const photo = `${import.meta.env.BASE_URL}photo.jpg`;
-const cvPdf = `${import.meta.env.BASE_URL}Al%20Baraa%20Al%20Harthi.pdf`;
+const cvPdf = `${import.meta.env.BASE_URL}Al_Baraa_Al_Harthi.pdf`;
 
 function Toast({ message, onClose }) {
   return (
