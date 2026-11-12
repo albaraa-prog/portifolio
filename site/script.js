@@ -56,6 +56,7 @@ function setLang(lang) {
   langBtn.textContent = lang === 'ar' ? 'EN' : 'ع';
   langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
   try { localStorage.setItem('lang', lang); } catch {}
+  document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
 }
 langBtn.addEventListener('click', () => setLang(document.documentElement.lang === 'ar' ? 'en' : 'ar'));
 let savedLang = null;
